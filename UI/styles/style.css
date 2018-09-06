@@ -1,0 +1,46 @@
+body {
+    overflow: hidden;
+}
+
+
+/* navigation styles */
+
+ul {
+    list-style: none;
+}
+
+nav {
+    padding: 40px;
+}
+
+nav ul {
+    min-height: 60px;
+    margin: 0;
+}
+
+nav li {
+    position: relative;
+    margin: 10px 20px;
+    padding: 10px 20px;
+}
+
+nav li:hover {
+    background-color: #ffb80e;
+    border-radius: 10px;
+    color: white;
+}
+
+@media screen and (max-width: 620px) {
+    /* tablets width */
+    body {
+        background: #000000;
+    }
+    nav ul {
+        flex-direction: column;
+        align-self: center;
+    }
+    nav li {
+        width: 100%;
+        text-align: center;
+    }
+}
