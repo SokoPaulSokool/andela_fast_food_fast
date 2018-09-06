@@ -43,11 +43,18 @@ nav li:hover {
     width: 100vw;
 }
 
+#description {
+    position: absolute;
+    top: 50%;
+    min-height: 40vh;
+    transform: translateY(-50%);
+    background: #ff611d;
+    text-align: center;
+}
+
 @media screen and (max-width: 620px) {
     /* tablets width */
-    body {
-        background: #000000;
-    }
+    body {}
     nav ul {
         flex-direction: column;
         align-self: center;
@@ -55,5 +62,8 @@ nav li:hover {
     nav li {
         width: 100%;
         text-align: center;
+    }
+    #description {
+        width: 100%;
     }
 }

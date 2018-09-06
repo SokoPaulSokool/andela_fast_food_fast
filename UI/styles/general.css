@@ -207,6 +207,7 @@
 /* center element vertically */
 
 .sokool-center-horizontal {
+    background: #7c3706;
     position: relative;
     margin: 0 auto;
 }
