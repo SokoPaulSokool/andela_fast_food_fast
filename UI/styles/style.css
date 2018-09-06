@@ -52,6 +52,18 @@ nav li:hover {
     text-align: center;
 }
 
+
+/* forms */
+
+#all-forms {
+    position: absolute;
+    display: block;
+    right: 0px;
+    width: 40vw;
+    height: 100vh;
+    background: red;
+}
+
 @media screen and (max-width: 620px) {
     /* tablets width */
     body {}
