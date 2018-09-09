@@ -1,6 +1,8 @@
 body {
-    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
     position: relative;
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -41,6 +43,7 @@ nav li:hover {
     position: relative;
     height: 100vh;
     width: 100vw;
+    transform: scaleX(-1);
 }
 
 #description {
@@ -50,6 +53,89 @@ nav li:hover {
     transform: translateY(-50%);
     background: #ff611d;
     text-align: center;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 20px;
+    opacity: 0.95;
+}
+
+#description h3 {
+    font-weight: 400;
+}
+
+#description h2 {
+    font-weight: 600;
+}
+
+#description h1 {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 2em;
+}
+
+
+/* forms */
+
+#all-forms {
+    position: absolute;
+    display: block;
+    right: 0px;
+    width: 0vw;
+    height: 100vh;
+    transition: 0.4s;
+    margin: 2px 0px;
+    /* transform: translateX(50px) */
+}
+
+form {
+    /* min-height: 40vh; */
+    padding: 20px 10px;
+    margin: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+}
+
+.hide {
+    display: none;
+}
+
+fieldset {
+    border: none;
+}
+
+#close {
+    top: 2px;
+    left: 2px;
+    z-index: 1;
+    background: #982121;
+}
+
+.fields {
+    width: 100%;
+    display: flex;
+    margin: 20px 5px;
+}
+
+.label {
+    min-width: 20%;
+    margin: 5px 2px;
+}
+
+input {
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-size: 1.4em;
+    color: #1d1d1d;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    background: #fbf9f966;
+    box-sizing: border-box;
+}
+
+#create_account,
+#login_now {
+    margin: 10px 2px;
 }
 
 @media screen and (max-width: 620px) {
@@ -65,5 +151,11 @@ nav li:hover {
     }
     #description {
         width: 100%;
+    }
+    .fields {
+        flex-direction: column;
+    }
+    #all-forms {
+        width: 80vw;
     }
 }
