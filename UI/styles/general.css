@@ -70,6 +70,26 @@ button:hover {
     color: #ffffff;
 }
 
+.sokool-p-1 {
+    padding: 8px;
+}
+
+.sokool-p-2 {
+    padding: 10px;
+}
+
+.sokool-p-3 {
+    padding: 15px;
+}
+
+.sokool-p-4 {
+    padding: 20px;
+}
+
+.sokool-p-5 {
+    padding: 30px;
+}
+
 
 /* percentage width helper */
 

@@ -6,6 +6,9 @@ body {
 }
 
 
+/* accent #ffb80e  primary #982121 secondary #ff611d */
+
+
 /* navigation styles */
 
 ul {
@@ -136,6 +139,39 @@ input {
 #create_account,
 #login_now {
     margin: 10px 2px;
+}
+
+
+/* orders style */
+
+.order-item {
+    min-width: 10%;
+    min-height: 200px;
+    border: 1px solid #ff611d;
+    border-radius: 10px;
+    padding: 8px;
+    margin: 10px;
+}
+
+.order-image {
+    background-image: url('../img/fast_food.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    width: 100%;
+    min-height: 150px;
+}
+
+.order-tittle {
+    text-align: center;
+    font-weight: 900;
+    margin: 10px 5px;
+}
+
+.orders-shell {
+    height: 85vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 @media screen and (max-width: 620px) {
