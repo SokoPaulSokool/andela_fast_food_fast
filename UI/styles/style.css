@@ -100,7 +100,8 @@ input {
     border-radius: 8px;
 }
 
-#create_account {
+#create_account,
+#login_now {
     margin: 10px 2px;
 }
 
