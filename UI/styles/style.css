@@ -74,6 +74,10 @@ form {
     margin: 10px;
 }
 
+.hide {
+    display: none;
+}
+
 #close {
     top: 2px;
     left: 2px;

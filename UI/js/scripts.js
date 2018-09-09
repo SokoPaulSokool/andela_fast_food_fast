@@ -6,6 +6,15 @@ document.getElementById('close').addEventListener('click', function() {
     closeForms();
 });
 
+document.getElementById('create_account').addEventListener('click', function() {
+    document.getElementById("signup-form").style.display = "none";
+    document.getElementById("login-form").style.display = "block";
+});
+document.getElementById('login_now').addEventListener('click', function() {
+    document.getElementById("login-form").style.display = "none";
+    document.getElementById("signup-form").style.display = "block";
+});
+
 function openForms() {
     // Opens view for forms
     const mq = window.matchMedia("(max-width: 620px)");
