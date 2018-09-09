@@ -47,7 +47,7 @@ button:hover {
 }
 
 .sokool-secondary-background {
-    background-color: #ff611d;
+    background-color: #ff611d !important;
 }
 
 .sokool-secondary-color {

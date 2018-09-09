@@ -102,8 +102,8 @@ form {
     display: none;
 }
 
-fieldset {
-    border: none;
+.show {
+    display: block;
 }
 
 #close {
@@ -168,10 +168,37 @@ input {
     margin: 10px 5px;
 }
 
+.order-decription {
+    font-weight: 400;
+    font-size: 0.9em;
+    margin: 10px 2px;
+}
+
+.order-button {
+    width: 40px;
+    height: auto;
+}
+
 .orders-shell {
     height: 85vh;
     overflow-x: hidden;
     overflow-y: scroll;
+}
+
+#dialog-view {
+    z-index: 1;
+    position: fixed;
+}
+
+.my-dialog {
+    width: 40vw;
+    min-height: 40vh;
+}
+
+.cover {
+    background: #982121;
+    opacity: 0.6;
+    position: absolute;
 }
 
 @media screen and (max-width: 620px) {
