@@ -47,6 +47,24 @@ try {
     };
 } catch (err) {}
 
+try {
+    document.getElementById('show_my_orders').onclick = function() {
+        document.getElementById("my_orders").classList.add("show_my_orders");
+        document.getElementById("my_orders").classList.replace("hide_my_orders", "show_my_orders");
+        document.getElementById("all-orders").classList.add("hide_my_orders");
+        document.getElementById("all-orders").classList.replace("show_my_orders", "hide_my_orders");
+
+    };
+} catch (err) {}
+try {
+    document.getElementById('show_all_orders').onclick = function() {
+        document.getElementById("my_orders").classList.add("hide_my_orders");
+        document.getElementById("my_orders").classList.replace("show_my_orders", "hide_my_orders");
+        document.getElementById("all-orders").classList.add("show_my_orders");
+        document.getElementById("all-orders").classList.replace("hide_my_orders", "show_my_orders");
+    };
+} catch (err) {}
+
 
 
 

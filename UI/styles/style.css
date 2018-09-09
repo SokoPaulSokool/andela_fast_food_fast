@@ -185,6 +185,15 @@ input {
     overflow-y: scroll;
 }
 
+
+/* #my_orders {
+    width: 25vw;
+}
+
+#all-orders {
+    width: 75vw;
+} */
+
 #dialog-view {
     z-index: 1;
     position: fixed;
@@ -199,6 +208,79 @@ input {
     background: #982121;
     opacity: 0.6;
     position: absolute;
+}
+
+.show_my_orders {
+    width: 100vw !important;
+    display: block !important;
+}
+
+.hide_my_orders {
+    width: 0 !important;
+    display: none !important;
+}
+
+
+/* order images */
+
+.order-1 {
+    background-image: url('../img/orders/BACON\ CHEESEBURGER.jpg');
+}
+
+.order-2 {
+    background-image: url('../img/orders/sandwich.jpg');
+}
+
+.order-3 {
+    background-image: url('../img/orders/pita.jpg');
+}
+
+.order-4 {
+    background-image: url('../img/orders/onion\ ring.jpg');
+}
+
+.order-5 {
+    background-image: url('../img/orders/humburger.jpg');
+}
+
+.order-6 {
+    background-image: url('../img/orders/FROSTY.jpg');
+}
+
+.order-7 {
+    background-image: url('../img/orders/fried\ chicken.jpg');
+}
+
+.order-8 {
+    background-image: url('../img/orders/french\ fries.jpg');
+}
+
+.order-9 {
+    background-image: url('../img/orders/DOUBLE-DOUBLE.jpg');
+}
+
+.order-10 {
+    background-image: url('../img/orders/CURLY\ FRIES.jpg');
+}
+
+.order-11 {
+    background-image: url('../img/orders/chickhen\ nugget.jpg');
+}
+
+.order-12 {
+    background-image: url('../img/orders/CHICKEN\ SANDWICH.jpg');
+}
+
+.order-13 {
+    background-image: url('../img/orders/CHICKEN\ QUESADILLA.jpg');
+}
+
+.order-14 {
+    background-image: url('../img/orders/CHICKEN\ POPEYES.jpg');
+}
+
+.order-15 {
+    background-image: url('../img/orders/CHERRY\ LIMEADE.jpg');
 }
 
 @media screen and (max-width: 620px) {
@@ -220,5 +302,24 @@ input {
     }
     #all-forms {
         width: 80vw;
+    }
+    #my_orders {
+        width: 0vw;
+        display: none;
+    }
+    #all-orders {
+        width: 100vw;
+        display: block;
+    }
+}
+
+@media screen and (min-width: 620px) {
+    #my_orders {
+        width: 25vw !important;
+        display: block !important;
+    }
+    #all-orders {
+        width: 75vw !important;
+        display: block !important;
     }
 }
