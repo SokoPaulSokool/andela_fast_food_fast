@@ -19,10 +19,11 @@ button {
     border-radius: 4px;
     color: white;
     cursor: pointer;
+    border: none;
 }
 
 button:hover {
-    background: #ff611d;
+    background: #ffffff;
     color: #7c3706;
 }
 

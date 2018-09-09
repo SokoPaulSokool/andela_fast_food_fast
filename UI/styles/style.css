@@ -1,6 +1,8 @@
 body {
-    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
     position: relative;
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -41,6 +43,7 @@ nav li:hover {
     position: relative;
     height: 100vh;
     width: 100vw;
+    transform: scaleX(-1);
 }
 
 #description {
@@ -52,6 +55,22 @@ nav li:hover {
     text-align: center;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+    padding: 20px;
+    opacity: 0.95;
+}
+
+#description h3 {
+    font-weight: 400;
+}
+
+#description h2 {
+    font-weight: 600;
+}
+
+#description h1 {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 2em;
 }
 
 
@@ -72,16 +91,23 @@ form {
     /* min-height: 40vh; */
     padding: 20px 10px;
     margin: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
 }
 
 .hide {
     display: none;
 }
 
+fieldset {
+    border: none;
+}
+
 #close {
     top: 2px;
     left: 2px;
     z-index: 1;
+    background: #982121;
 }
 
 .fields {
@@ -98,6 +124,13 @@ form {
 input {
     padding: 3px 8px;
     border-radius: 8px;
+    font-size: 1.4em;
+    color: #1d1d1d;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    background: #fbf9f966;
+    box-sizing: border-box;
 }
 
 #create_account,

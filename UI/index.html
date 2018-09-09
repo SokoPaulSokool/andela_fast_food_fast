@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <meta name="HandheldFriendly" content="true">
     <title>Fast Food Fast</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="./styles/general.css">
     <link rel="stylesheet" href="./styles/style.css">
 </head>
@@ -24,14 +25,16 @@
     <section id="main" class="view sokool-white-color sokool-display-flex sokool-position-relative">
         <div id="image-back" class=""></div>
         <div id="description" class="sokool-w-50 sokool-flex-column sokool-flex-center">
-            <h3 class="sokool-white-color">Order Food and get it in the shortest time posible.</h3>
-            <h2 class="sokool-white-color">We live to serve a fast life. We live to serve you</h2>
+            <h3 class="sokool-white-color">Order Food and get it in the shortest time posible. Your time is precious</h3>
+            <h2 class="sokool-white-color">We live to serve a fast life. We live to serve you </h2>
+            <h1>Fast Food Fast</h1>
             <button id="login_button" class="sokool-primary-background">Login</button>
         </div>`
 
         <!-- forms -->
-        <div id="all-forms" class="sokool-primary-background sokool-display-flex">
-            <button class="sokool-position-relative" id="close">Close</button>
+        <div id="all-forms" class="sokool-secondary-background sokool-display-flex">
+
+            <input class="sokool-position-relative" type="image" src="./img/close.png" alt="close" id="close">
             <div class="sokool-position-relative sokool-w-100 sokool-h-100 ">
                 <div id="signup-form" class=" sokool-position-absolute  sokool-w-100 hide">
                     <form class="sokool-secondary-background  sokool-position-relative ">
@@ -61,6 +64,15 @@
                             <span class="label">Password</span>
                             <input type="password" name="password" placeholder="password">
                         </div>
+                        <div class="fields">
+                            <input type="radio" id="admin" name="account" value="admin">
+                            <label for="admin">Admin</label>
+
+                            <input type="radio" id="customer" name="account" value="customer">
+                            <label for="customer">Customer</label>
+
+                        </div>
+
                         <button type="" id="" class="sokool-primary-background">Log in</button>
                         <div id="login_now" class="sokool-pointer ">Create Account</div>
                     </form>
