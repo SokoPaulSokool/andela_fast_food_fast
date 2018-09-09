@@ -10,7 +10,7 @@ function openForms() {
     // Opens view for forms
     const mq = window.matchMedia("(max-width: 620px)");
     if (mq.matches) {
-        document.getElementById("all-forms").style.width = "90vw";
+        document.getElementById("all-forms").style.width = "95vw";
     } else {
         document.getElementById("all-forms").style.width = "40vw";
     }

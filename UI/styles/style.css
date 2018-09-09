@@ -50,6 +50,8 @@ nav li:hover {
     transform: translateY(-50%);
     background: #ff611d;
     text-align: center;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 
@@ -61,14 +63,41 @@ nav li:hover {
     right: 0px;
     width: 0vw;
     height: 100vh;
-    background: red;
     transition: 0.4s;
+    margin: 2px 0px;
+    /* transform: translateX(50px) */
+}
+
+form {
+    /* min-height: 40vh; */
+    padding: 20px 10px;
+    margin: 10px;
 }
 
 #close {
-    position: absolute;
     top: 2px;
     left: 2px;
+    z-index: 1;
+}
+
+.fields {
+    width: 100%;
+    display: flex;
+    margin: 20px 5px;
+}
+
+.label {
+    min-width: 20%;
+    margin: 5px 2px;
+}
+
+input {
+    padding: 3px 8px;
+    border-radius: 8px;
+}
+
+#create_account {
+    margin: 10px 2px;
 }
 
 @media screen and (max-width: 620px) {
@@ -84,5 +113,11 @@ nav li:hover {
     }
     #description {
         width: 100%;
+    }
+    .fields {
+        flex-direction: column;
+    }
+    #all-forms {
+        width: 80vw;
     }
 }
