@@ -59,9 +59,16 @@ nav li:hover {
     position: absolute;
     display: block;
     right: 0px;
-    width: 40vw;
+    width: 0vw;
     height: 100vh;
     background: red;
+    transition: 0.4s;
+}
+
+#close {
+    position: absolute;
+    top: 2px;
+    left: 2px;
 }
 
 @media screen and (max-width: 620px) {
