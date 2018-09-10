@@ -47,7 +47,7 @@ button:hover {
 }
 
 .sokool-secondary-background {
-    background-color: #ff611d;
+    background-color: #ff611d !important;
 }
 
 .sokool-secondary-color {
@@ -68,6 +68,26 @@ button:hover {
 
 .sokool-white-color {
     color: #ffffff;
+}
+
+.sokool-p-1 {
+    padding: 8px;
+}
+
+.sokool-p-2 {
+    padding: 10px;
+}
+
+.sokool-p-3 {
+    padding: 15px;
+}
+
+.sokool-p-4 {
+    padding: 20px;
+}
+
+.sokool-p-5 {
+    padding: 30px;
 }
 
 
