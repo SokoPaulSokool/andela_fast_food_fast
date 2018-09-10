@@ -46,6 +46,11 @@ try {
         window.location.href = "orders.html";
     };
 } catch (err) {}
+try {
+    document.getElementById('title').onclick = function() {
+        window.location.href = "index.html";
+    };
+} catch (err) {}
 
 try {
     document.getElementById('show_my_orders').onclick = function() {
