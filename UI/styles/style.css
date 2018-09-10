@@ -197,10 +197,11 @@ input {
 #dialog-view {
     z-index: 1;
     position: fixed;
+    top: 0;
 }
 
 .my-dialog {
-    width: 40vw;
+    width: 70vw;
     min-height: 40vh;
 }
 
@@ -318,6 +319,10 @@ input {
     box-shadow: 0 8px 16px 0 #ff611d;
 }
 
+.horizontal-vertical {
+    flex-direction: column;
+}
+
 @media screen and (max-width: 900px) {
     #my_orders {
         width: 0vw;
@@ -326,6 +331,9 @@ input {
     #all-orders {
         width: 100vw;
         display: block;
+    }
+    .my-dialog {
+        width: 100vw;
     }
 }
 
@@ -337,5 +345,8 @@ input {
     #all-orders {
         width: 75vw !important;
         display: block !important;
+    }
+    .horizontal-vertical {
+        flex-direction: row;
     }
 }

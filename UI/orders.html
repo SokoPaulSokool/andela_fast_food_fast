@@ -151,12 +151,28 @@
             <div class="cover sokool-fit-parent"></div>
             <div class="my-dialog sokool-center-in-parent sokool-white-background sokool-p-2">
                 <div>Add item to my orders</div>
-                <div class="order-item" class=" ">
-                    <div class="order-tittle">Chips</div>
-                    <div class="order-image"></div>
-                    <div class="order-decription">Well fried chips to meet your desire</div>
-                    <input id="add-final" class="sokool-primary-background  order-button" type="image" src="./img/add_circle_outline.png" alt="close">
+                <div class="sokool-display-flex horizontal-vertical">
+                    <div class=" sokool-w-100" class=" ">
+                        <div class="order-tittle">Chips</div>
+                        <div class="order-image"></div>
+                        <div class="order-decription">Well fried chips to meet your desire</div>
+                    </div>
+
+                    <form class="sokool-w-100 sokool-position-relative ">
+                        <div class="fields">
+                            <span class="label">Price</span>
+                            <h3>10000 UGX</h3>
+                        </div>
+                        <div class="fields">
+                            <span class="label">Quantity</span>
+                            <input type="text" name="quantity" placeholder="quantity">
+                        </div>
+                        <input id="add-final" class="sokool-primary-background  order-button" type="image" src="./img/add_circle_outline.png" alt="close">
+
+
+                    </form>
                 </div>
+
 
             </div>
 
