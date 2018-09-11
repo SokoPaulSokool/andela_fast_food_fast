@@ -103,7 +103,13 @@ try {
 } catch (err) {}
 try {
     document.getElementById('login_now').onclick = function() {
-        window.location.href = "orders.html";
+        selection = document.getElementById("select").value;
+        if (selection == "admin") {
+            window.location.href = "admin.html";
+        } else {
+            window.location.href = "orders.html";
+        }
+
     };
 } catch (err) {}
 try {
