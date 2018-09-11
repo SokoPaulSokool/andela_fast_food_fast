@@ -10,7 +10,7 @@ This app is hosted at https://sokopaulsokool.github.io/andela_fast_food_fast/UI/
 
 ### How Get Started On The Project
 
--Clone the project to your computer
+- Clone the project to your computer
 
 ```
     git clone https://github.com/SokoPaulSokool/andela_fast_food_fast.git
@@ -24,3 +24,5 @@ This app is hosted at https://sokopaulsokool.github.io/andela_fast_food_fast/UI/
 - User clicks create account if he/she has does not have an account then can create account by providing username, email and password
 - When user logs in he/she can view the menu and a list of his/her orders if he/she had made some orders
 - When the user clicks on the cart button on any item in the menu, a dialog prompting the user to enter the quantity appears. The user can then enter quantity and the item is added on the user's order list
+
+### How The User Interface works For The Admin
