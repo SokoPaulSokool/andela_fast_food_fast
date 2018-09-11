@@ -25,6 +25,29 @@ try {
         document.getElementById("signup-form").style.display = "block";
     });
 } catch (err) {}
+
+try {
+    document.getElementById('show_menu').addEventListener('click', function() {
+        // switch to menu list
+        document.getElementById("customers-list").style.display = "none";
+        document.getElementById("menu_list").style.display = "flex";
+    });
+} catch (err) {}
+try {
+    document.getElementById('show_all_orders').addEventListener('click', function() {
+        // switch to customers list
+        document.getElementById("customers-list").style.display = "flex";
+        document.getElementById("menu_list").style.display = "none";
+    });
+} catch (err) {}
+try {
+    document.getElementById('show_my_orders').addEventListener('click', function() {
+        // switch to cusomers list
+        document.getElementById("customers-list").style.display = "flex";
+        document.getElementById("menu_list").style.display = "none";
+    });
+} catch (err) {}
+
 try {
     document.getElementById('fast-orders').addEventListener('click', function(e) {
         // open add quantity dialog
