@@ -52,10 +52,25 @@ try {
     document.getElementById('fast-orders').addEventListener('click', function(e) {
         // open add quantity dialog
 
+        console.log("l");
         if (e.target && isInArray(e.target.classList, "order-button")) {
+
             var element = document.getElementById("dialog-view");
             element.classList.toggle("show");
             element.classList.toggle("hide");
+        }
+    });
+} catch (err) {}
+try {
+    document.getElementById('menu-items').addEventListener('click', function(e) {
+        // open add quantity dialog
+
+
+        if (e.target && isInArray(e.target.classList, "edit-button")) {
+
+            var element2 = document.getElementById("edit-dialog-view");
+            element2.classList.toggle("show");
+            element2.classList.toggle("hide");
         }
     });
 } catch (err) {}
@@ -64,6 +79,14 @@ try {
     document.getElementById('add-final').onclick = function() {
         // close add quantity dialog
         var element = document.getElementById("dialog-view");
+        element.classList.toggle("show");
+        element.classList.toggle("hide");
+    };
+} catch (err) {}
+try {
+    document.getElementById('edit-final').onclick = function() {
+        // close add quantity dialog
+        var element = document.getElementById("edit-dialog-view");
         element.classList.toggle("show");
         element.classList.toggle("hide");
     };
