@@ -102,7 +102,8 @@ try {
     };
 } catch (err) {}
 try {
-    document.getElementById('login_now').onclick = function() {
+    document.getElementById('login_now').onclick = function(e) {
+        e.preventDefault();
         selection = document.getElementById("select").value;
         if (selection == "admin") {
             window.location.href = "admin.html";
