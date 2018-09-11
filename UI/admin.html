@@ -30,7 +30,7 @@
             <div>
                 <h1>Menu</h1>
                 <div class="sokool-p-1 sokool-flex-row sokool-flex-center-vert decline">
-                    <input class="sokool-secondary-background order-button sokool-m-1" type="image" src="./img/add_circle_outline.png" alt="accept">
+                    <input id="add_order" class="sokool-secondary-background order-button sokool-m-1" type="image" src="./img/add_circle_outline.png" alt="accept">
                     <p>add</p>
                 </div>
             </div>
@@ -231,7 +231,7 @@
         <div id="edit-dialog-view" class="sokool-fit-parent hide">
             <div class="cover sokool-fit-parent"></div>
             <div class="my-dialog sokool-center-in-parent sokool-white-background sokool-p-2">
-                <div>Edit</div>
+                <div>Edit or add order</div>
                 <div class="sokool-display-flex horizontal-vertical">
                     <div class=" sokool-w-100" class=" ">
                         <div class="order-tittle">Chips</div>
@@ -239,15 +239,19 @@
                         <div class="order-decription">Well fried chips to meet your desire</div>
                     </div>
 
-                    <div class="sokool-w-100 sokool-position-relative ">
+                    <form class="sokool-w-100 sokool-position-relative ">
+                        <div class="fields">
+                            <span class="label">Name</span>
+                            <input type="text" name="name" placeholder="name">
+                        </div>
                         <div class="fields">
                             <span class="label">Price</span>
-                            <h3>10000 UGX</h3>
+                            <input type="text" name="price" placeholder="price">
                         </div>
-                        <input id="edit-final" class="sokool-primary-background  order-button" type="image" src="./img/add_circle_outline.png" alt="close">
+                        <input id="edit-final" class="sokool-secondary-background  order-button" type="image" src="./img/done.png" alt="close">
 
 
-                    </div>
+                    </form>
                 </div>
 
 

@@ -84,7 +84,17 @@ try {
     };
 } catch (err) {}
 try {
-    document.getElementById('edit-final').onclick = function() {
+    document.getElementById('edit-final').onclick = function(e) {
+        e.preventDefault();
+        // close add quantity dialog
+        var element = document.getElementById("edit-dialog-view");
+        element.classList.toggle("show");
+        element.classList.toggle("hide");
+    };
+} catch (err) {}
+try {
+    document.getElementById('add_order').onclick = function(e) {
+        e.preventDefault();
         // close add quantity dialog
         var element = document.getElementById("edit-dialog-view");
         element.classList.toggle("show");
