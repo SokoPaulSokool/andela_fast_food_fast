@@ -284,6 +284,13 @@ input {
     background-image: url('../img/orders/CHERRY\ LIMEADE.jpg');
 }
 
+
+/* menu list */
+
+#menu_list {
+    display: none;
+}
+
 @media screen and (max-width: 620px) {
     /* tablets width */
     body {}
