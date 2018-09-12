@@ -36,15 +36,23 @@ try {
 try {
     document.getElementById('show_all_orders').addEventListener('click', function() {
         // switch to customers list
-        document.getElementById("customers-list").style.display = "flex";
-        document.getElementById("menu_list").style.display = "none";
+
+        try {
+
+            document.getElementById("customers-list").style.display = "flex";
+            document.getElementById("menu_list").style.display = "none";
+        } catch (err) {}
     });
 } catch (err) {}
 try {
     document.getElementById('show_my_orders').addEventListener('click', function() {
         // switch to cusomers list
-        document.getElementById("customers-list").style.display = "flex";
-        document.getElementById("menu_list").style.display = "none";
+        try {
+
+
+            document.getElementById("customers-list").style.display = "flex";
+            document.getElementById("menu_list").style.display = "none";
+        } catch (err) {}
     });
 } catch (err) {}
 
@@ -121,21 +129,17 @@ try {
 
 try {
     document.getElementById('show_my_orders').onclick = function() {
-        // shows all menu and hides selected orders when menu button is clicked
-        document.getElementById("my_orders").classList.add("show_my_orders");
-        document.getElementById("my_orders").classList.replace("hide_my_orders", "show_my_orders");
-        document.getElementById("all-orders").classList.add("hide_my_orders");
-        document.getElementById("all-orders").classList.replace("show_my_orders", "hide_my_orders");
+        // shows selected orders for customer or pending orders for admin  when my orders or  pending orders orders button is clicked
+        replaceOrAddNewClass(document.getElementById("all-orders"), "show_my_orders", "hide_my_orders");
+        replaceOrAddNewClass(document.getElementById("my_orders"), "hide_my_orders", "show_my_orders");
 
     };
 } catch (err) {}
 try {
     document.getElementById('show_all_orders').onclick = function() {
-        // hides all menu and shows selected orders when orders button is clicked
-        document.getElementById("my_orders").classList.add("hide_my_orders");
-        document.getElementById("my_orders").classList.replace("show_my_orders", "hide_my_orders");
-        document.getElementById("all-orders").classList.add("show_my_orders");
-        document.getElementById("all-orders").classList.replace("hide_my_orders", "show_my_orders");
+        // shows menu for customer or customer orders for admin  when menu or orders button is clicked
+        replaceOrAddNewClass(document.getElementById("all-orders"), "hide_my_orders", "show_my_orders");
+        replaceOrAddNewClass(document.getElementById("my_orders"), "show_my_orders", "hide_my_orders");
     };
 } catch (err) {}
 
@@ -166,4 +170,19 @@ function isInArray(array, search) {
         }
     }
     return found;
+}
+
+function replaceOrAddNewClass(element, oldClass, newClass) {
+    // replaces a oldClass with newClass if exists and adds newClass if oldClass does not exist
+    var classes;
+    classes = element.className.split(" ");
+    if (classes.indexOf(oldClass) !== -1) {
+        classes[classes.indexOf(oldClass)] = newClass;
+        element.className = classes.join(" ");
+    } else {
+        if (classes.indexOf(newClass) == -1) {
+            element.className = classes.join(" ") + " " + newClass;
+        }
+
+    }
 }
