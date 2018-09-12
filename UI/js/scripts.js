@@ -72,6 +72,7 @@ try {
 try {
     document.getElementById('menu-items').addEventListener('click', function(e) {
         // open add quantity dialog
+        e.preventDefault();
 
 
         if (e.target && isInArray(e.target.classList, "edit-button")) {
@@ -84,8 +85,9 @@ try {
 } catch (err) {}
 
 try {
-    document.getElementById('add-final').onclick = function() {
+    document.getElementById('add-final').onclick = function(e) {
         // close add quantity dialog
+        e.preventDefault();
         var element = document.getElementById("dialog-view");
         element.classList.toggle("show");
         element.classList.toggle("hide");

@@ -171,6 +171,7 @@ input {
 
 .order-tittle {
     text-align: center;
+    text-transform: uppercase;
     font-weight: 900;
     margin: 10px 5px;
 }
@@ -292,13 +293,25 @@ input {
 
 @media screen and (max-width: 680px) {
     /* tablets width */
+    nav {
+        padding: 0px;
+    }
+    h1 {
+        padding: 0;
+        margin: 5px;
+    }
     nav ul {
         flex-direction: column;
         align-self: center;
+        min-height: 20px;
+        margin: 0 auto;
+        padding: 0;
     }
     nav li {
         width: 100%;
         text-align: center;
+        margin: 3px 9px;
+        padding: 6px 9px;
     }
     #description {
         width: 100%;
