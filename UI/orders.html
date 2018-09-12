@@ -14,6 +14,7 @@
 </head>
 
 <body class="sokool-clean">
+    <!-- ******************** navigation bar start **************************** -->
     <nav class="sokool-primary-background sokool-clean sokool-position-relative sokool-w-100">
         <ul class="sokool-display-flex sokool-flex-center-vert sokool-white-color">
             <li>
@@ -23,15 +24,18 @@
             <li id="show_my_orders" class="sokool-pointer">My Orders</li>
         </ul>
     </nav>
+    <!-- ******************** navigation bar end **************************** -->
+
+    <!-- ******************** orders start **************************** -->
     <section class="sokool-display-flex sokool-w-100 sokool-p-1">
 
-
+        <!-- ******************** menu start **************************** -->
         <section id="all-orders" class="sokool-w-75">
             <div>
                 <h1>Menu</h1>
             </div>
 
-
+            <!-- ******************** menu list start **************************** -->
             <div id="fast-orders" class="sokool-display-flex sokool-flex-wrap sokool-flex-center-hor orders-shell">
                 <div class="order-item shadow" class=" ">
                     <div class="order-tittle">BACON CHEESEBURGER</div>
@@ -110,12 +114,17 @@
 
 
             </div>
+            <!-- ******************** menu list end **************************** -->
 
         </section>
+        <!-- ******************** menu end **************************** -->
+
+        <!-- ******************** selected orders start **************************** -->
         <section id="my_orders" class="sokool-w-25">
             <div>
                 <h1> My Orders</h1>
             </div>
+            <!-- ******************** selected orders list start **************************** -->
             <div class="sokool-display-flex sokool-flex-wrap sokool-flex-center-hor orders-shell">
                 <div class="order-item shadow" class=" ">
                     <div class="order-tittle">DOUBLE-DOUBLE</div>
@@ -144,9 +153,13 @@
                 </div>
 
             </div>
+            <!-- ******************** selected orders list start **************************** -->
 
 
         </section>
+        <!-- ******************** selected orders end **************************** -->
+
+        <!-- ******************** Dialog to add item to selected orders start **************************** -->
         <div id="dialog-view" class="sokool-fit-parent hide">
             <div class="cover sokool-fit-parent"></div>
             <div class="my-dialog sokool-center-in-parent sokool-white-background sokool-p-2">
@@ -177,7 +190,9 @@
             </div>
 
         </div>
+        <!-- ******************** Dialog to add item to selected orders end **************************** -->
     </section>
+    <!-- ******************** orders start **************************** -->
 
     <script src="./js/scripts.js"></script>
 </body>
