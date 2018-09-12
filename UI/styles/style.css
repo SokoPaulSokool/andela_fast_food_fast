@@ -53,13 +53,14 @@ nav li:hover {
     position: absolute;
     top: 50%;
     min-height: 40vh;
-    transform: translateY(-50%);
+    transform: translateY(-30%);
     background: #ff611d;
     text-align: center;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     padding: 20px;
     opacity: 0.95;
+    left: 0;
 }
 
 #description h3 {
@@ -117,11 +118,17 @@ form {
     width: 100%;
     display: flex;
     margin: 20px 5px;
+    flex-wrap: nowrap;
+    justify-content: space-around;
 }
 
 .label {
     min-width: 20%;
     margin: 5px 2px;
+}
+
+.fields input {
+    width: 60%;
 }
 
 input {
@@ -185,15 +192,6 @@ input {
     overflow-y: scroll;
 }
 
-
-/* #my_orders {
-    width: 25vw;
-}
-
-#all-orders {
-    width: 75vw;
-} */
-
 #dialog-view {
     z-index: 1;
     position: fixed;
@@ -203,6 +201,7 @@ input {
 .my-dialog {
     width: 70vw;
     min-height: 40vh;
+    left: 0;
 }
 
 .cover {
@@ -291,9 +290,8 @@ input {
     display: none;
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 680px) {
     /* tablets width */
-    body {}
     nav ul {
         flex-direction: column;
         align-self: center;
@@ -310,6 +308,12 @@ input {
     }
     #all-forms {
         width: 80vw;
+    }
+    .label {
+        margin: 2px 1px;
+    }
+    input {
+        font-size: 1.2em;
     }
 }
 
