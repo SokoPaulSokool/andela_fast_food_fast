@@ -33,3 +33,9 @@ class TestOrders(unittest.TestCase):
         self.orders_list.place_order(self.order)
         self.assertEqual(len(self.orders_list.orders_list), 3)
         self.assertEqual(self.orders_list.orders_list[2].order_id, 2)
+
+    def test_getting_all_orders(self):
+        self.orders_list.place_order(self.order)
+        self.orders_list.place_order(self.order)
+        self.orders_list.place_order(self.order)
+        self.assertEqual(len(self.orders_list.get_all_orders()), 3)
