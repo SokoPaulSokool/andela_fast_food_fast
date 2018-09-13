@@ -28,21 +28,29 @@ class CustomerOrders:
         self.orders_list.append(new_order)
 
     def get_all_orders(self):
+        """returns all orders in the list"""
+
         return self.orders_list
 
     def is_order_exist(self, id):
+        """checks if order exists in the list"""
+
         if len(self.orders_list) > id and id >= 0:
             return True
         else:
             return False
 
     def get_order(self, id):
+        """gets order by id if it exists"""
+
         if self.is_order_exist(id):
             return self.orders_list[id]
         else:
             return "order does not exist"
 
     def delete_order(self, id):
+        """deletes order by id if it exists"""
+
         if self.is_order_exist(id):
             self.orders_list.pop(id)
             return "deleted"
@@ -50,6 +58,8 @@ class CustomerOrders:
             return "order does not exist"
 
     def change_status(self, id, status):
+        """changes order status by id if it exists"""
+
         if self.is_order_exist(id):
             self.orders_list[id].order_status = status
             return "status changed to "+status
