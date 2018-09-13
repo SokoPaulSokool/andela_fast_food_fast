@@ -29,3 +29,15 @@ class CustomerOrders:
 
     def get_all_orders(self):
         return self.orders_list
+
+    def is_order_exist(self, id):
+        if len(self.orders_list) > id and id >= 0:
+            return True
+        else:
+            return False
+
+    def get_order(self, id):
+        if self.is_order_exist(id):
+            return self.orders_list[id]
+        else:
+            return "order does not exist"

@@ -39,3 +39,14 @@ class TestOrders(unittest.TestCase):
         self.orders_list.place_order(self.order)
         self.orders_list.place_order(self.order)
         self.assertEqual(len(self.orders_list.get_all_orders()), 3)
+
+    def test_getting_order_by_id(self):
+        self.orders_list.place_order(self.order)
+        self.orders_list.place_order(self.order)
+        self.assertEqual(self.orders_list.get_order(1), self.order)
+
+    def test_getting_order_by_id_that_that_does_not_exist(self):
+        self.orders_list.place_order(self.order)
+        self.orders_list.place_order(self.order)
+        self.assertEqual(self.orders_list.get_order(2),
+                         "order does not exist")
