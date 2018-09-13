@@ -50,3 +50,29 @@ class TestOrders(unittest.TestCase):
         self.orders_list.place_order(self.order)
         self.assertEqual(self.orders_list.get_order(2),
                          "order does not exist")
+
+    def test_deleting_order_by_id(self):
+        self.orders_list.place_order(self.order)
+        self.orders_list.place_order(self.order)
+        self.assertEqual(self.orders_list.delete_order(1), "deleted")
+        self.assertEqual(len(self.orders_list.get_all_orders()), 1)
+
+    def test_deleting_order_by_id_that_that_does_not_exist(self):
+        self.orders_list.place_order(self.order)
+        self.orders_list.place_order(self.order)
+        self.assertEqual(self.orders_list.delete_order(2),
+                         "order does not exist")
+        self.assertEqual(len(self.orders_list.get_all_orders()), 2)
+
+    def test_changing_order_status(self):
+        self.orders_list.place_order(self.order)
+        self.orders_list.place_order(self.order)
+        self.assertEqual(self.orders_list.change_status(
+            1, "pending"), "status changed to pending")
+        self.assertEqual(self.orders_list.get_order(1).order_status, "pending")
+
+    def test_changing_order_status_of_oder_that_does_not_exist(self):
+        self.orders_list.place_order(self.order)
+        self.orders_list.place_order(self.order)
+        self.assertEqual(self.orders_list.change_status(
+            2, "pending"), "order does not exist")

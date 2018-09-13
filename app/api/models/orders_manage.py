@@ -41,3 +41,17 @@ class CustomerOrders:
             return self.orders_list[id]
         else:
             return "order does not exist"
+
+    def delete_order(self, id):
+        if self.is_order_exist(id):
+            self.orders_list.pop(id)
+            return "deleted"
+        else:
+            return "order does not exist"
+
+    def change_status(self, id, status):
+        if self.is_order_exist(id):
+            self.orders_list[id].order_status = status
+            return "status changed to "+status
+        else:
+            return "order does not exist"
