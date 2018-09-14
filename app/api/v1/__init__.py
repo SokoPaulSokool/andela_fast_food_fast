@@ -15,4 +15,4 @@ app.register_blueprint(api_update_order_status)
 app.register_blueprint(api_delete_order)
 
 app.config['SECRET_KEY'] = os.environ.get(
-    'SECRET_KEY', 'this_should_be_configured')
+    'SECRET_KEY', 'sokool-1234567')
