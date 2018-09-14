@@ -31,7 +31,9 @@ These are the endpoints
 | PUT    | /api/v1/orders/id | Update a specific orders status to 'complete','pending','incomplete' | order_status                                                   |
 | DELETE | /api/v1/orders/id | Delete a specific entry using an id                                  |                                                                |
 
-APIs are Hosted at [https://andela-fast-food-fast.herokuapp.com/api/v1/](https://andela-fast-food-fast.herokuapp.com/api/v1/)
+APIs are Hosted at https://andela-fast-food-fast.herokuapp.com
+
+Sample get all orders [https://andela-fast-food-fast.herokuapp.com/api/v1/orders](https://andela-fast-food-fast.herokuapp.com/api/v1/orders)
 
 ## Setting Up for Development
 
