@@ -13,6 +13,13 @@ class Order:
         self.order_status = "incomplete"
         self.order_id = ''
 
+    def toJSON(self):
+        return {"order_id": self.order_id, "order_title": self.order_title,
+                "order_description": self.order_description, "order_price": self.order_price,
+                "delivery_location": self.delivery_location, "created_at": self.created_at,
+                "order_status": self.order_status
+                }
+
 
 class CustomerOrders:
     def __init__(self):
