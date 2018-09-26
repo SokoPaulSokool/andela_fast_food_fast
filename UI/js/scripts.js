@@ -1,6 +1,24 @@
 try {
     document.getElementById('login_button').addEventListener('click', function() {
         openForms();
+        document.getElementById("signup-form").style.display = "none";
+        document.getElementById("login-form").style.display = "block";
+    });
+} catch (err) {}
+try {
+    document.getElementById('submit_button').addEventListener('click', function(e) {
+        e.preventDefault();
+        openForms();
+        document.getElementById("signup-form").style.display = "none";
+        document.getElementById("login-form").style.display = "block";
+    });
+} catch (err) {}
+try {
+    document.getElementById('sign_up_button').addEventListener('click', function(e) {
+        e.preventDefault();
+        openForms();
+        document.getElementById("login-form").style.display = "none";
+        document.getElementById("signup-form").style.display = "block";
     });
 } catch (err) {}
 try {
