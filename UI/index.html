@@ -20,7 +20,6 @@
             <li>
                 <h2 id="title" class="sokool-position-relative sokool-clean sokool-white-color sokool-pointer">Fast Food Fast</h2>
             </li>
-            <li>My Orders</li>
         </ul>
     </nav>
     <!-- ******************** navigation bar end **************************** -->
@@ -33,7 +32,10 @@
             <h3 class="sokool-white-color">Order Food and get it in the shortest time posible. Your time is precious</h3>
             <h2 class="sokool-white-color">We live to serve a fast life. We live to serve you </h2>
             <h1>Fast Food Fast</h1>
-            <button id="login_button" class="sokool-primary-background">Login</button>
+            <div>
+                <button id="sign_up_button" class="sokool-primary-background">Sign Up</button>
+                <button id="login_button" class="sokool-primary-background">Login</button>
+            </div>
         </div>
         <!-- ******************** decription end **************************** -->
 
@@ -76,12 +78,13 @@
                         </div>
 
                         <div class="fields">
-                            <select class="label sokool-p-1" name="" id="select">
+                            <span class="label">Account Type</span>
+                            <select class="label sokool-p-1 sokool-w-60" name="" id="select">
                                 <option class="label sokool-p-1" value="customer">
-                                    <h4>Customer</h4>
+                                    Customer
                                 </option>
                                 <option class="label sokool-p-1" value="admin">
-                                    <h4>Admin</h4>
+                                    Admin
                                 </option>
                             </select>
                         </div>

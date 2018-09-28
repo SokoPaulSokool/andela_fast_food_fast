@@ -164,6 +164,7 @@ input {
     background-image: url('../img/fast_food.jpg');
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
     position: relative;
     width: 100%;
     min-height: 150px;
@@ -187,6 +188,13 @@ input {
     height: auto;
 }
 
+.order-price {
+    text-align: start;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin: 10px 5px;
+}
+
 .orders-shell {
     height: 85vh;
     overflow-x: hidden;
@@ -197,6 +205,7 @@ input {
     z-index: 1;
     position: fixed;
     top: 0;
+    width: 100vw;
 }
 
 .my-dialog {
