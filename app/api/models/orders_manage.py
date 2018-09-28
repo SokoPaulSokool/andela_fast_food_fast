@@ -29,7 +29,7 @@ class CustomerOrders:
         """assigns id to new order and adds it to orders list"""
 
         if len(self.orders_list) >= 0:
-            new_order.order_id = len(self.orders_list)
+            new_order.order_id = len(self.orders_list)+1
         else:
             new_order.order_id = 0
         self.orders_list.append(new_order)
@@ -50,6 +50,8 @@ class CustomerOrders:
     def get_order(self, id):
         """gets order by id if it exists"""
 
+        id = id - 1
+        print(id)
         if self.is_order_exist(id):
             return self.orders_list[id]
         else:
@@ -58,7 +60,7 @@ class CustomerOrders:
     def delete_order(self, id):
         """deletes order by id if it exists"""
 
-        if self.is_order_exist(id):
+        if self.is_order_exist(id-1):
             self.orders_list.pop(id)
             return "deleted"
         else:
