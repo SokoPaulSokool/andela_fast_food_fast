@@ -59,9 +59,9 @@ class CustomerOrders:
 
     def delete_order(self, id):
         """deletes order by id if it exists"""
-
-        if self.is_order_exist(id-1):
-            self.orders_list.pop(id-1)
+        id = id - 1
+        if self.is_order_exist(id):
+            self.orders_list.pop(id)
             return "deleted"
         else:
             return "order does not exist"
