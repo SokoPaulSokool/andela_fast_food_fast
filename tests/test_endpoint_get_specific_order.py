@@ -13,7 +13,7 @@ class TestGetOrdersById(unittest.TestCase):
         test_client = app.test_client()
         test_client.post('/api/v1/orders', data=order,
                          content_type='application/json')
-        response = test_client.get('/api/v1/orders/0')
+        response = test_client.get('/api/v1/orders/1')
         self.assertEqual(json.loads(response.data)[
                          "order_title"], "order_title")
 

@@ -25,14 +25,14 @@ class TestOrders(unittest.TestCase):
     def test_place_single_order(self):
         self.orders_list.place_order(self.order)
         self.assertEqual(len(self.orders_list.orders_list), 1)
-        self.assertEqual(self.orders_list.orders_list[0].order_id, 0)
+        self.assertEqual(self.orders_list.orders_list[0].order_id, 1)
 
     def test_place_multiple_order(self):
         self.orders_list.place_order(self.order)
         self.orders_list.place_order(self.order)
         self.orders_list.place_order(self.order)
         self.assertEqual(len(self.orders_list.orders_list), 3)
-        self.assertEqual(self.orders_list.orders_list[2].order_id, 2)
+        self.assertEqual(self.orders_list.orders_list[2].order_id, 3)
 
     def test_getting_all_orders(self):
         self.orders_list.place_order(self.order)
@@ -48,7 +48,7 @@ class TestOrders(unittest.TestCase):
     def test_getting_order_by_id_that_that_does_not_exist(self):
         self.orders_list.place_order(self.order)
         self.orders_list.place_order(self.order)
-        self.assertEqual(self.orders_list.get_order(2),
+        self.assertEqual(self.orders_list.get_order(3),
                          "order does not exist")
 
     def test_deleting_order_by_id(self):
@@ -60,7 +60,7 @@ class TestOrders(unittest.TestCase):
     def test_deleting_order_by_id_that_that_does_not_exist(self):
         self.orders_list.place_order(self.order)
         self.orders_list.place_order(self.order)
-        self.assertEqual(self.orders_list.delete_order(2),
+        self.assertEqual(self.orders_list.delete_order(3),
                          "order does not exist")
         self.assertEqual(len(self.orders_list.get_all_orders()), 2)
 
@@ -75,4 +75,4 @@ class TestOrders(unittest.TestCase):
         self.orders_list.place_order(self.order)
         self.orders_list.place_order(self.order)
         self.assertEqual(self.orders_list.change_status(
-            2, "pending"), "order does not exist")
+            4, "pending"), "order does not exist")
