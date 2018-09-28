@@ -61,7 +61,7 @@ class CustomerOrders:
         """deletes order by id if it exists"""
 
         if self.is_order_exist(id-1):
-            self.orders_list.pop(id)
+            self.orders_list.pop(id-1)
             return "deleted"
         else:
             return "order does not exist"
@@ -69,8 +69,8 @@ class CustomerOrders:
     def change_status(self, id, status):
         """changes order status by id if it exists"""
 
-        if self.is_order_exist(id):
-            self.orders_list[id].order_status = status
+        if self.is_order_exist(id-1):
+            self.orders_list[id-1].order_status = status
             return "status changed to "+status
         else:
             return "order does not exist"
