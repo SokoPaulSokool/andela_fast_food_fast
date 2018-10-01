@@ -93,3 +93,15 @@ class create_tables():
         finally:
             if self.conn is not None:
                 self.conn.close()
+
+    def menu_drop_table(self):
+        "Drop Menu table"
+        try:
+            self.conn
+            self.cursor.execute("""DROP TABLE Menu CASCADE;""")
+            print("Dropping Menu table")
+        except (Exception, psycopg2.DatabaseError) as error:
+            print(error)
+        finally:
+            if self.conn is not None:
+                self.conn.close()
