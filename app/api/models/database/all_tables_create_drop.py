@@ -26,7 +26,6 @@ class create_tables():
                 )
                 """)
             self.cursor.execute(create_table_query)
-            self.conn.commit()
             print("creating Users table")
 
         except (Exception, psycopg2.DatabaseError) as error:
@@ -49,7 +48,6 @@ class create_tables():
                         """)
             self.cursor.execute(create_table_query)
             print("creating Menu table")
-            self.conn.commit()
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
         finally:
@@ -86,7 +84,7 @@ class create_tables():
         self.conn
         try:
             self.cursor.execute(
-                """DROP  TABLE TABLE IF EXISTS Users CASCADE;""")
+                """DROP TABLE IF EXISTS Users CASCADE;""")
             print("Dropping Users table")
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
@@ -106,8 +104,8 @@ class create_tables():
             if self.conn is not None:
                 self.conn.close()
 
-        def menu_drop_table(self):
-            "Drop Orders table"
+    def orders_drop_table(self):
+        "Drop Orders table"
         try:
             self.conn
             self.cursor.execute("""DROP TABLE Orders CASCADE;""")
