@@ -18,7 +18,7 @@ class QueryMenuTable():
         try:
             cur = self.conn.cursor()
             db_query = """INSERT INTO Menu (item_id, item_name , item_description, item_price)
-                        VALUES (DEFAULT,%s,%s,%s) RETURNING item_name, item_description, item_price"""
+                        VALUES (DEFAULT,%s,%s,%s) RETURNING item_id, item_name, item_description, item_price"""
             cur.execute(db_query, (menu_item.item_name, menu_item.item_description,
                                    menu_item.item_price))
 
@@ -52,7 +52,7 @@ class QueryMenuTable():
             cur.execute(
                 """SELECT * from Menu """)
             rows = cur.fetchall()
-            return rows[0]
+            return rows
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
             return "failed"
@@ -65,8 +65,8 @@ class QueryMenuTable():
             cur.execute(
                 """DELETE FROM  Menu WHERE item_id = %s  """,
                 [item_id])
-            rows = cur.fetchall()
-            return rows[0]
+            rows = cur.rowcount
+            return rows
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
             return "failed"
