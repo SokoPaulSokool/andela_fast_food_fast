@@ -79,3 +79,17 @@ class create_tables():
         finally:
             if self.conn is not None:
                 self.conn.close()
+
+    def users_drop_table(self):
+        """Drop Users table"""
+
+        self.conn
+        try:
+            self.cursor.execute(
+                """DROP  TABLE TABLE IF EXISTS Users CASCADE;""")
+            print("Dropping Users table")
+        except (Exception, psycopg2.DatabaseError) as error:
+            print(error)
+        finally:
+            if self.conn is not None:
+                self.conn.close()
