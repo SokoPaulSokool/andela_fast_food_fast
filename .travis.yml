@@ -1,8 +1,12 @@
 language: python
 python:
   - "3.6"
+services:
+  - postgresql
 install:
   - pip install -r requirements.txt
+before_script:
+  - psql -c 'create database postgres;' -U postgres
 script:
   - py.test --cov-config .coveragerc --cov=app   tests/
   - coverage report
