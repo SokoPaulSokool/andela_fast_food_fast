@@ -34,3 +34,24 @@ class create_tables():
         finally:
             if self.conn is not None:
                 self.conn.close()
+
+    def menu_table(self):
+        """Create menu table"""
+        self.conn
+        try:
+            create_table_query = (
+                """CREATE TABLE IF NOT EXISTS Menu (
+                        item_id SERIAL PRIMARY KEY,
+                        item_name VARCHAR(255) NOT NULL,
+                        item_description VARCHAR(255) NOT NULL, 
+                        item_price VARCHAR(255) NOT NULL
+                        )
+                        """)
+            self.cursor.execute(create_table_query)
+            print("creating Menu table")
+            self.conn.commit()
+        except (Exception, psycopg2.DatabaseError) as error:
+            print(error)
+        finally:
+            if self.conn is not None:
+                self.conn.close()
