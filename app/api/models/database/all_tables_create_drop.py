@@ -55,3 +55,27 @@ class create_tables():
         finally:
             if self.conn is not None:
                 self.conn.close()
+
+    def orders_table(self):
+        """Create orders table"""
+        self.conn
+        try:
+            create_table_query = (
+                """CREATE TABLE IF NOT EXISTS Orders (
+                        order_id SERIAL PRIMARY KEY,
+                        user_id INTEGER,
+                        item_id INTEGER,
+                        delivery_location VARCHAR(255) NOT NULL, 
+                        created_at VARCHAR(255) NOT NULL,
+                        edited_at VARCHAR(255) NOT NULL,
+                        FOREIGN KEY (user_id) REFERENCES Users (user_id) ON DELETE CASCADE,
+                        FOREIGN KEY (item_id) REFERENCES Menu (item_id) ON DELETE CASCADE
+                        )
+                        """)
+            self.cursor.execute(create_table_query)
+            print("creating Orders table")
+        except (Exception, psycopg2.DatabaseError) as error:
+            print(error)
+        finally:
+            if self.conn is not None:
+                self.conn.close()
