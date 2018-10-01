@@ -5,7 +5,7 @@ import psycopg2.extras as extra
 from app.api.models.user_manage import User
 
 
-class auth_crud():
+class QueryUsersTable():
     def __init__(self):
         self.conn = connect()
         self.conn.autocommit = True

@@ -5,7 +5,7 @@ import psycopg2.extras as extra
 from app.api.models.orders_manage import Menu
 
 
-class auth_crud():
+class QueryMenuTable():
     def __init__(self):
         self.conn = connect()
         self.conn.autocommit = True
@@ -45,7 +45,7 @@ class auth_crud():
             print(error)
             return "failed"
 
-    def get_all_menu_items(self, item_id):
+    def get_all_menu_items(self):
         """Get all food items on menu"""
 
         cur = self.conn.cursor()
