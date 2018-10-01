@@ -1,6 +1,5 @@
 import psycopg2
-from database.connection import connect
-from database.create_tables import create_tables
+from app.api.models.database.connection import connect
 import psycopg2.extras as extra
 from app.api.models.orders_manage import Menu
 

@@ -1,6 +1,5 @@
 import psycopg2
-from database.connection import connect
-from database.create_tables import create_tables
+from app.api.models.database.connection import connect
 import psycopg2.extras as extra
 from app.api.models.user_manage import User
 
@@ -20,7 +19,7 @@ class QueryUsersTable():
             if self.get_user_by_email(user.email) == 'failed':
                 cur = self.conn.cursor()
                 db_query = """INSERT INTO Users (user_id, user_name , email, password, user_type)
-                            VALUES (DEFAULT,%s,%s,%s) RETURNING user_id, name, email, password, user_type """
+                            VALUES (DEFAULT,%s,%s,%s, %s) RETURNING user_id, user_name, email, password, user_type ;"""
                 cur.execute(db_query, (user.user_name, user.email,
                                        user.password, user.user_type))
 
@@ -56,8 +55,8 @@ class QueryUsersTable():
             cur.execute(
                 """DELETE FROM  Users WHERE email = %s  """,
                 [email])
-            rows = cur.fetchall()
-            return rows[0]
+            rows = cur.rowcount
+            return rows
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
             return "failed"

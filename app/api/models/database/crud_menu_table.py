@@ -1,6 +1,5 @@
 import psycopg2
-from database.connection import connect
-from database.create_tables import create_tables
+from app.api.models.database.connection import connect
 import psycopg2.extras as extra
 from app.api.models.orders_manage import Menu
 
@@ -21,7 +20,7 @@ class QueryMenuTable():
             db_query = """INSERT INTO Menu (item_id, item_name , item_description, item_price)
                         VALUES (DEFAULT,%s,%s,%s) RETURNING item_name, item_description, item_price"""
             cur.execute(db_query, (menu_item.item_name, menu_item.item_description,
-                                    menu_item.item_price))
+                                   menu_item.item_price))
 
             print("created")
             rows = cur.fetchone()
