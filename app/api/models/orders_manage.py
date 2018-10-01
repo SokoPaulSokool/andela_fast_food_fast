@@ -1,6 +1,21 @@
 import datetime
 
 
+class Menu:
+    """creates order"""
+
+    def __init__(self, item_id, item_name, item_description, item_price):
+        self.item_id = item_id
+        self.item_name = item_name
+        self.item_description = item_description
+        self.item_price = item_price
+
+    def toJSON(self):
+        return {"item_id": self.item_id, "item_name": self.item_name,
+                "item_description": self.item_description, "item_price": self.item_price
+                }
+
+
 class Order:
     """creates order"""
 
