@@ -1,7 +1,6 @@
 import psycopg2
 from app.api.models.database.connection import connect
 import psycopg2.extras as extra
-from app.api.models.user_manage import User
 
 
 class QueryUsersTable():
@@ -12,7 +11,7 @@ class QueryUsersTable():
         self.dict_cursor = self.conn.cursor(
             cursor_factory=extra.DictCursor)
 
-    def add_user(self, user: User):
+    def add_user(self, user):
         """Add user to database"""
 
         try:
