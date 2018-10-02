@@ -63,7 +63,6 @@ class create_tables():
                         order_id SERIAL PRIMARY KEY,
                         user_id INTEGER,
                         item_id INTEGER,
-                        order_price INTEGER,
                         delivery_location VARCHAR(255) NOT NULL, 
                         created_at VARCHAR NOT NULL,
                         edited_at VARCHAR NOT NULL,

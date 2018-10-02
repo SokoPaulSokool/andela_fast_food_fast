@@ -16,9 +16,9 @@ class QueryOrdersTable():
         """Add order table"""
         try:
             cur = self.conn.cursor()
-            db_query = """INSERT INTO Orders (order_id, user_id , item_id, order_price, delivery_location, created_at, edited_at)
-                            VALUES (DEFAULT,%s,%s,%s, %s,%s,%s) RETURNING order_id, user_id, item_id, delivery_location, created_at, edited_at ;"""
-            cur.execute(db_query, (order.user_id, order.item_id, order.order_price,
+            db_query = """INSERT INTO Orders (order_id, user_id , item_id, delivery_location, created_at, edited_at)
+                            VALUES (DEFAULT,%s,%s,%s, %s,%s) RETURNING order_id, user_id, item_id, delivery_location, created_at, edited_at ;"""
+            cur.execute(db_query, (order.user_id, order.item_id,
                                    order.delivery_location, order.created_at, order.edited_at))
 
             rows = cur.fetchone()

@@ -20,7 +20,7 @@ class TestOrdersTable(unittest.TestCase):
         QueryMenuTable().add_item(Menu("", "chicken", "fried chicken", 10000))
         QueryUsersTable().add_user(User("", "soko", "sopapaso73@gmail.com", "1234", "admin"))
         result = QueryOrdersTable().add_order(
-            OrderItem("", 1, 1, "500", "Kampala"))
+            OrderItem("", 1, 1, "Kampala"))
         self.assertEqual(result[3], "Kampala")
 
     def test_geting_all_orders(self):
@@ -28,11 +28,11 @@ class TestOrdersTable(unittest.TestCase):
         QueryUsersTable().add_user(User("", "soko", "sopapaso73@gmail.com", "1234", "admin"))
         orders_table = QueryOrdersTable()
         orders_table.add_order(
-            OrderItem("", 1, 1, "500", "Kampala"))
+            OrderItem("", 1, 1, "Kampala"))
         orders_table.add_order(
-            OrderItem("", 1, 1, "500", "Kampala"))
+            OrderItem("", 1, 1, "Kampala"))
         orders_table.add_order(
-            OrderItem("", 1, 1, "500", "Kampala"))
+            OrderItem("", 1, 1, "Kampala"))
         result = orders_table.get_all_orders()
         self.assertEqual(len(result), 3)
 
@@ -42,11 +42,11 @@ class TestOrdersTable(unittest.TestCase):
         QueryUsersTable().add_user(User("", "paul", "paul@gmail.com", "1234", "admin"))
         orders_table = QueryOrdersTable()
         orders_table.add_order(
-            OrderItem("", 1, 1, "500", "Kampala"))
+            OrderItem("", 1, 1, "Kampala"))
         orders_table.add_order(
-            OrderItem("", 2, 1, "500", "Kampala"))
+            OrderItem("", 2, 1, "Kampala"))
         orders_table.add_order(
-            OrderItem("", 2, 1, "500", "Kampala"))
+            OrderItem("", 2, 1, "Kampala"))
         result = orders_table.get_all_orders_for_user(2)
         print(result)
         self.assertEqual(len(result), 2)
@@ -57,11 +57,11 @@ class TestOrdersTable(unittest.TestCase):
         QueryUsersTable().add_user(User("", "paul", "paul@gmail.com", "1234", "admin"))
         orders_table = QueryOrdersTable()
         orders_table.add_order(
-            OrderItem("", 1, 1, "500", "Kampala"))
+            OrderItem("", 1, 1, "Kampala"))
         orders_table.add_order(
-            OrderItem("", 2, 1, "500", "Kampala"))
+            OrderItem("", 2, 1, "Kampala"))
         orders_table.add_order(
-            OrderItem("", 2, 1, "500", "Kampala"))
+            OrderItem("", 2, 1, "Kampala"))
         result = orders_table.get_order_by_id(2)
         print(result)
         self.assertEqual(result[0], 2)
