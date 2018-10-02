@@ -35,7 +35,7 @@ def signup():
                 "email is not valid. use example soko@andela.com",
                 400)
         if len(password) < 5:
-            return ResponseMessage().send(
+            return MessageResponse().send(
                 "password is too short. mut have atleats 5 characters",
                 400)
 
