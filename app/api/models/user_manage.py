@@ -42,7 +42,7 @@ class User:
                     identity={
                         "user_id": check_result[0],
                         "user_name": check_result[1],
-                        "user_type": check_result[2]})
+                        "user_type": check_result[4]})
                 message = check_result[1] + \
                     " has been authorised."
                 return MessageResponse.send({
