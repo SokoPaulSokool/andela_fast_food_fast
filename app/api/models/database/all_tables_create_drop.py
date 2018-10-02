@@ -63,9 +63,10 @@ class create_tables():
                         order_id SERIAL PRIMARY KEY,
                         user_id INTEGER,
                         item_id INTEGER,
+                        order_price INTEGER,
                         delivery_location VARCHAR(255) NOT NULL, 
-                        created_at VARCHAR(255) NOT NULL,
-                        edited_at VARCHAR(255) NOT NULL,
+                        created_at VARCHAR NOT NULL,
+                        edited_at VARCHAR NOT NULL,
                         FOREIGN KEY (user_id) REFERENCES Users (user_id) ON DELETE CASCADE,
                         FOREIGN KEY (item_id) REFERENCES Menu (item_id) ON DELETE CASCADE
                         )

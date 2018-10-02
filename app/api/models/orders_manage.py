@@ -16,6 +16,20 @@ class Menu:
                 }
 
 
+class OrderItem:
+    """creates order"""
+
+    def __init__(self, order_id, user_id, item_id, order_price, delivery_location):
+        self.order_id = ''
+        self.user_id = user_id
+        self.item_id = item_id
+        self.order_price = order_price
+        self.delivery_location = delivery_location
+        self.created_at = datetime.datetime.now().timestamp()
+        self.edited_at = datetime.datetime.now().timestamp()
+        self.order_status = "incomplete"
+
+
 class Order:
     """creates order"""
 
