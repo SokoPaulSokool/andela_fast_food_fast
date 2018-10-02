@@ -6,6 +6,7 @@ services:
 install:
   - pip install -r requirements.txt
 before_script:
+  - -c "CREATE USER postgres WITH PASSWORD 'spolspol' ;" -U postgres
   - psql -c 'create database postgres;' -U postgres
 script:
   - py.test --cov-config .coveragerc --cov=app   tests/
