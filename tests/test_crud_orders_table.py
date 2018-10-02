@@ -21,7 +21,7 @@ class TestOrdersTable(unittest.TestCase):
         QueryUsersTable().add_user(User("", "soko", "sopapaso73@gmail.com", "1234", "admin"))
         result = QueryOrdersTable().add_order(
             OrderItem("", 1, 1, "Kampala"))
-        self.assertEqual(result[3], "Kampala")
+        self.assertEqual(result[4], "Kampala")
 
     def test_geting_all_orders(self):
         QueryMenuTable().add_item(Menu("", "chicken", "fried chicken", 10000))

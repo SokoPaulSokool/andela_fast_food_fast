@@ -1,9 +1,30 @@
 import unittest
-from app import Order, CustomerOrders, app
+from app import Order, CustomerOrders, app,  OrderItem, Menu
 import json
+from app.api.models.user_manage import User
+from app.api.models.database.crud_orders_table import QueryOrdersTable
+from app.api.models.database.crud_menu_table import QueryMenuTable
+from app.api.models.database.crud_users_table import QueryUsersTable
+from app.api.models.database.all_tables_create_drop import create_tables
 
 
 class TestUpdateOrderStatus(unittest.TestCase):
+    def setUp(self):
+        create_tables().users_drop_table()
+        create_tables().menu_drop_table()
+        create_tables().orders_drop_table()
+        create_tables().users_table()
+        create_tables().menu_table()
+        create_tables().orders_table()
+        QueryMenuTable().add_item(Menu("", "chicken", "fried chicken", 10000))
+        QueryUsersTable().add_user(User("", "soko", "sopapaso73@gmail.com", "1234", "admin"))
+        self.order = OrderItem("", 1, 1, "kla")
+        CustomerOrders().place_order(self.order)
+
+    def teardown(self):
+        create_tables().users_drop_table()
+        create_tables().menu_drop_table()
+        create_tables().orders_drop_table()
 
     def test_sending_empty_order_status(self):
         test_client = app.test_client()

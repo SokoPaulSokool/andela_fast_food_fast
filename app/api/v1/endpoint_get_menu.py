@@ -35,7 +35,7 @@ api_add_menu = Blueprint('add_menu', __name__)
 def add_menu():
     """adds menu"""
     current_user = get_jwt_identity()
-    if current_user["user_type"] is 'admin':
+    if current_user["user_type"] == 'admin':
         if request.method == "POST":
             current_user = get_jwt_identity()
             print(current_user)

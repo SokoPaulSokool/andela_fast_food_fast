@@ -1,7 +1,6 @@
 import psycopg2
 from app.api.models.database.connection import connect
 import psycopg2.extras as extra
-from app.api.models.orders_manage import Menu
 
 
 class QueryMenuTable():
@@ -12,7 +11,7 @@ class QueryMenuTable():
         self.dict_cursor = self.conn.cursor(
             cursor_factory=extra.DictCursor)
 
-    def add_item(self, menu_item: Menu):
+    def add_item(self, menu_item):
         """Add item to menu table"""
 
         try:
