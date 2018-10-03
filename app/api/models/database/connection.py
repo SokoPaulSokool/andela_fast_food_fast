@@ -1,16 +1,16 @@
 import psycopg2
 import os
 
-DATABASE_URL = 'postgres://rtoomoesiqakui:3f567be47163a5ccc4b1ce14ce4a131a2e23a44d7c3dd43ddcf0d6de950bbfab@ec2-54-204-23-228.compute-1.amazonaws.com:5432/d62ahk5c6fpk6m'
+DATABASE_URL = 'postgres://wwsmvpyvegrmoa:aee73a8991e50b401fd088a52d2ffd267fc989ab89a1aa19a2e2c91bb67fad4e@ec2-23-23-80-20.compute-1.amazonaws.com:5432/d1vcsvncmia2pu'
 
 
 def connect():
     """Connection to database"""
 
     heroku1 = psycopg2.connect(
-        user='rtoomoesiqakui',
-        password='3f567be47163a5ccc4b1ce14ce4a131a2e23a44d7c3dd43ddcf0d6de950bbfab',
-        host='ec2-54-204-23-228.compute-1.amazonaws.com',
+        user='wwsmvpyvegrmoa',
+        password='aee73a8991e50b401fd088a52d2ffd267fc989ab89a1aa19a2e2c91bb67fad4e',
+        host="ec2-23-23-80-20.compute-1.amazonaws.com",
         port='5432', sslmode='require')
 
     # heroku2 = psycopg2.connect(DATABASE_URL, sslmode='require')
