@@ -15,4 +15,4 @@ responses:
   200:
     description: This returns a list of all items on the orders
   400:
-    ? description
+    description: ""
