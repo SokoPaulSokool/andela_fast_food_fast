@@ -45,9 +45,9 @@ def get_all_users_orders():
         user_id = current_user["user_id"]
         if request.method == "GET":
             all_orders = []
-            for key in range(len(customer_orders.get_orders_for_specific_user(user_id))):
-                all_orders.append(
-                    customer_orders.get_all_orders()[key].toJSON())
+            user_orders = customer_orders.get_orders_for_specific_user(user_id)
+            for key in range(len(user_orders)):
+                all_orders.append(user_orders[key].toJSON())
 
             return jsonify(all_orders), 200
     else:

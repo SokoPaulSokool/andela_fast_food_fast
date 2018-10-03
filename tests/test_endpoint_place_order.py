@@ -16,7 +16,7 @@ class OrdersHelpers():
 
     def add_order(self, item_id, delivery_location):
         QueryUsersTable().add_user(User("", "soko", "sopapaso73@gmail.com", "1234", "admin"))
-        response = self.test_client.post('/api/v1/orders', data=json.dumps(dict(
+        response = self.test_client.post('/api/v1/users/orders', data=json.dumps(dict(
             item_id=item_id, delivery_location=delivery_location)),  headers={
             'Authorization': 'Bearer ' + self.get_token()}, content_type='application/json')
 
