@@ -3,7 +3,9 @@ from app.api.models import Order, CustomerOrders
 from app.api.v1.customer_orders import customer_orders
 from app.api.models.database.crud_menu_table import QueryMenuTable
 from app.api.models.orders_manage import Menu
+from app.api.models.user_manage import User
 from app.api.models import Order, CustomerOrders, MessageResponse
+from flasgger import swag_from
 from flask_jwt_extended import (
     create_access_token,
     verify_fresh_jwt_in_request,
