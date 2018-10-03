@@ -4,7 +4,8 @@ python:
 services:
   - postgresql
 before_script:
-  - psql -c 'create database postgres;' -U postgres
+  - psql -c "CREATE DATABASE postgress;" -U postgres
+  - psql -c "CREATE USER postgres WITH PASSWORD 'spolspol';" -U postgres
 install:
   - pip install -r requirements.txt
 script:
