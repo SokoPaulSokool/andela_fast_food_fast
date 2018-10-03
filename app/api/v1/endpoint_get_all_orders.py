@@ -31,3 +31,24 @@ def get_all_orders():
             return jsonify(all_orders), 200
     else:
         return MessageResponse().send("You need to be an admin to access this route", 406)
+
+
+api_get_all_users_orders = Blueprint('get_all_users_orders', __name__)
+
+
+@api_get_all_orders.route('/api/v1/users/orders', methods=['GET'])
+@jwt_required
+def get_all_users_orders():
+    """gets all user orders"""
+    current_user = get_jwt_identity()
+    if current_user["user_id"]:
+        user_id = current_user["user_id"]
+        if request.method == "GET":
+            all_orders = []
+            user_orders = customer_orders.get_orders_for_specific_user(user_id)
+            for key in range(len(user_orders)):
+                all_orders.append(user_orders[key].toJSON())
+
+            return jsonify(all_orders), 200
+    else:
+        return MessageResponse().send("You need to be an admin to access this route", 406)
