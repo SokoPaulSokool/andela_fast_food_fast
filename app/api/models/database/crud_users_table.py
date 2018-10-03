@@ -46,6 +46,20 @@ class QueryUsersTable():
             print(error)
             return "failed"
 
+    def get_user_by_id(self, user_id):
+        """Get user by email"""
+
+        cur = self.conn.cursor()
+        try:
+            cur.execute(
+                """SELECT * from Users WHERE user_id = %s  """,
+                [user_id])
+            rows = cur.fetchall()
+            return rows[0]
+        except (Exception, psycopg2.DatabaseError) as error:
+            print(error)
+            return "failed"
+
     def delete_user_by_email(self, email):
         """Delete user by email"""
 

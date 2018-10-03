@@ -1,4 +1,5 @@
 import datetime
+from app.api.models.database.crud_orders_table import QueryOrdersTable
 
 
 class Menu:
@@ -14,6 +15,35 @@ class Menu:
         return {"item_id": self.item_id, "item_name": self.item_name,
                 "item_description": self.item_description, "item_price": self.item_price
                 }
+
+
+class OrderItem:
+    """creates order"""
+
+    def __init__(self, order_id, user_id, item_id, delivery_location):
+        self.order_id = order_id
+        self.user_id = user_id
+        self.item_id = item_id
+        self.delivery_location = delivery_location
+        self.created_at = datetime.datetime.now().timestamp()
+        self.edited_at = datetime.datetime.now().timestamp()
+        self.order_status = "incomplete"
+
+    def toJSON(self):
+        return {"order_id": self.order_id, "user_id": self.user_id,
+                "item_id": self.item_id, "delivery_location": self.delivery_location,
+                "created_at": self.created_at, "edited_at": self.edited_at,
+                "order_status": self.order_status
+                }
+
+    @staticmethod
+    def fromTurple(order_item_turple):
+        order = OrderItem(
+            order_item_turple[0], order_item_turple[1], order_item_turple[2], order_item_turple[4])
+        order.order_status = order_item_turple[3]
+        order.created_at = order_item_turple[5]
+        order.edited_at = order_item_turple[6]
+        return order
 
 
 class Order:
@@ -40,43 +70,49 @@ class CustomerOrders:
     def __init__(self):
         self.orders_list = []
 
-    def place_order(self, new_order: Order):
+    def place_order(self, new_order: OrderItem):
         """assigns id to new order and adds it to orders list"""
-
-        if len(self.orders_list) >= 0:
-            new_order.order_id = len(self.orders_list)+1
+        order_result = QueryOrdersTable().add_order(new_order)
+        if order_result == "failed":
+            return "item does not exist on menu"
         else:
-            new_order.order_id = 0
-        self.orders_list.append(new_order)
+            print(order_result)
+            item = OrderItem.fromTurple(order_result)
+            return item.toJSON()
 
     def get_all_orders(self):
         """returns all orders in the list"""
-
+        orders = QueryOrdersTable().get_all_orders()
+        print(orders)
+        for key in range(len(orders)):
+            self.orders_list.append(OrderItem.fromTurple(orders[key]))
         return self.orders_list
 
     def is_order_exist(self, id):
         """checks if order exists in the list"""
-
-        if len(self.orders_list) > id and id >= 0:
-            return True
-        else:
+        order_result = QueryOrdersTable().get_order_by_id(id)
+        if order_result == "failed":
             return False
+        else:
+            return True
 
     def get_order(self, id):
         """gets order by id if it exists"""
 
-        id = id - 1
-        print(id)
-        if self.is_order_exist(id):
-            return self.orders_list[id]
-        else:
+        order_result = QueryOrdersTable().get_order_by_id(id)
+        if order_result == "failed":
             return "order does not exist"
+        else:
+            return OrderItem.fromTurple(order_result)
 
     def delete_order(self, id):
         """deletes order by id if it exists"""
-        id = id - 1
-        if self.is_order_exist(id):
-            self.orders_list.pop(id)
+        order_result = QueryOrdersTable().get_order_by_id(id)
+
+        order_result = QueryOrdersTable().delete_order_by_id(id)
+        if order_result == "failed":
+            return "order does not exist"
+        elif order_result > 0:
             return "deleted"
         else:
             return "order does not exist"
@@ -84,8 +120,10 @@ class CustomerOrders:
     def change_status(self, id, status):
         """changes order status by id if it exists"""
 
-        if self.is_order_exist(id-1):
-            self.orders_list[id-1].order_status = status
-            return "status changed to "+status
-        else:
+        order_result = QueryOrdersTable().update_order_status(id, status)
+        if not self.is_order_exist(id):
             return "order does not exist"
+        else:
+            print(order_result)
+            order = OrderItem.fromTurple(order_result)
+            return "status changed to "+order.order_status
