@@ -3,6 +3,7 @@ from app.api.models import MessageResponse
 from app.api.models.user_manage import User
 from app.api.models.database.crud_users_table import QueryUsersTable
 from re import match
+from flasgger import swag_from
 
 api_signup = Blueprint('signup', __name__)
 
@@ -49,6 +50,7 @@ api_login = Blueprint('login', __name__)
 
 
 @api_signup.route('/api/v1/auth/login', methods=['POST'])
+@swag_from("../../docs/auth/login.yaml")
 def login():
     """Logs in up user"""
     if request.method == 'POST':
