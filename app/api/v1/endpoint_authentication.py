@@ -44,7 +44,12 @@ def signup():
         new_user = User("", user_name, email, password, user_type)
 
         result = QueryUsersTable().add_user(new_user)
-        return jsonify({"user_id": result[0], "user_name": result[1], "email": result[2], "password": result[3], "account_type": result[4]}), 200
+        print(data)
+        print(result)
+        if result == "failed":
+            return "failed", 400
+        else:
+            return jsonify({"user_id": result[0], "user_name": result[1], "email": result[2], "password": result[3], "account_type": result[4]}), 200
 
 
 api_login = Blueprint('login', __name__)
