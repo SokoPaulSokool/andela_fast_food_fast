@@ -26,7 +26,7 @@ class OrdersHelpers():
         test_client = app.test_client()
         response = test_client.post('/api/v1/auth/login', data=json.dumps(dict(
             email="sopapaso73@gmail.com", password="1234",)), content_type='application/json')
-        return json.loads(response.get_data(as_text=True))["message"]["access_token"]
+        return json.loads(response.get_data(as_text=True))["access_token"]
 
 
 @pytest.mark.parametrize("item_id, delivery_location",
