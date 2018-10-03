@@ -42,7 +42,7 @@ def signup():
         new_user = User("", user_name, email, password, user_type)
 
         result = QueryUsersTable().add_user(new_user)
-        return MessageResponse.send(result, 200)
+        return jsonify({"user_id": result[0], "user_name": result[1], "email": result[2], "password": result[3], "account_type": result[4]}), 200
 
 
 api_login = Blueprint('login', __name__)
@@ -61,5 +61,4 @@ def login():
         email = data.get('email')
         password = data.get('password')
         result = User.authenticate_user(email, password)
-        print(result)
         return result

@@ -1,4 +1,5 @@
 from app.api.models.database.crud_users_table import QueryUsersTable
+from flask import Blueprint, request, jsonify, json
 from app.api.models.message_response import MessageResponse
 from passlib.hash import pbkdf2_sha256 as sha256
 from flask_jwt_extended import (
@@ -45,10 +46,10 @@ class User:
                         "user_type": check_result[4]})
                 message = check_result[1] + \
                     " has been authorised."
-                return MessageResponse.send({
+                return jsonify({
                     "message": message,
                     'access_token': access_token
-                }, 200)
+                }), 200
             else:
                 return MessageResponse.send(
                     "login failed  wrong password ", 401)
