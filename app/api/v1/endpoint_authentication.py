@@ -9,6 +9,7 @@ api_signup = Blueprint('signup', __name__)
 
 
 @api_signup.route('/api/v1/auth/signup', methods=['POST'])
+@swag_from("../../docs/auth/signup.yaml")
 def signup():
     """signs up user"""
     if request.method == 'POST':
