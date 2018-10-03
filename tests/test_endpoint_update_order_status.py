@@ -26,10 +26,17 @@ class TestUpdateOrderStatus(unittest.TestCase):
         create_tables().menu_drop_table()
         create_tables().orders_drop_table()
 
+    def get_token(self):
+        test_client = app.test_client()
+        response = test_client.post('/api/v1/auth/login', data=json.dumps(dict(
+            email="sopapaso73@gmail.com", password="1234",)), content_type='application/json')
+        return json.loads(response.get_data(as_text=True))["message"]["access_token"]
+
     def test_sending_empty_order_status(self):
         test_client = app.test_client()
         response = test_client.put('/api/v1/orders/1', data=json.dumps(dict(
-            order_status="")), content_type='application/json')
+            order_status="")), content_type='application/json', headers={
+                'Authorization': 'Bearer ' + self.get_token()})
 
         self.assertEqual(json.loads(response.data)[
                          "message"], "either order_status is not set or empty")
@@ -37,7 +44,8 @@ class TestUpdateOrderStatus(unittest.TestCase):
     def test_updating_non_existing_order(self):
         test_client = app.test_client()
         response = test_client.put('/api/v1/orders/20', data=json.dumps(dict(
-            order_status="complete")), content_type='application/json')
+            order_status="complete")), content_type='application/json', headers={
+                'Authorization': 'Bearer ' + self.get_token()})
 
         self.assertEqual(json.loads(response.data)[
                          "message"], "order does not exist")
@@ -45,7 +53,8 @@ class TestUpdateOrderStatus(unittest.TestCase):
     def test_updating_existing_order(self):
         test_client = app.test_client()
         response = test_client.put('/api/v1/orders/1', data=json.dumps(dict(
-            order_status="complete")), content_type='application/json')
+            order_status="complete")), content_type='application/json', headers={
+                'Authorization': 'Bearer ' + self.get_token()})
 
         self.assertEqual(json.loads(response.data)[
                          "message"], "status changed to complete")

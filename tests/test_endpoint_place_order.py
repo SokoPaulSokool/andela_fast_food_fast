@@ -14,29 +14,19 @@ class OrdersHelpers():
     def __init__(self, app):
         self.test_client = app.test_client()
 
-    def signup_get_token(self):
-        self.test_client.post('/api/v1/auth/signup',
-                              data=dict(user_name="user_name",
-                                        email="sopapaso73@gmail.com",
-                                        password="password",
-                                        user_type="admin"
-                                        ), content_type='application/json'
-                              )
-        response = self.test_client.post('/api/v1/auth/login',
-                                         data=dict(
-                                             email="sopapaso73@gmail.com",
-                                             password="password"
-                                         ), content_type='application/json'
-                                         )
-        print(response)
-        return json.loads(response.data)["message"]["access_token"]
-
     def add_order(self, item_id, delivery_location):
+        QueryUsersTable().add_user(User("", "soko", "sopapaso73@gmail.com", "1234", "admin"))
         response = self.test_client.post('/api/v1/orders', data=json.dumps(dict(
             item_id=item_id, delivery_location=delivery_location)),  headers={
-            'Authorization': 'Bearer ' + self.signup_get_token()}, content_type='application/json')
+            'Authorization': 'Bearer ' + self.get_token()}, content_type='application/json')
 
         return response
+
+    def get_token(self):
+        test_client = app.test_client()
+        response = test_client.post('/api/v1/auth/login', data=json.dumps(dict(
+            email="sopapaso73@gmail.com", password="1234",)), content_type='application/json')
+        return json.loads(response.get_data(as_text=True))["message"]["access_token"]
 
 
 @pytest.mark.parametrize("item_id, delivery_location",
@@ -45,8 +35,17 @@ class OrdersHelpers():
                              (1, "")
                          ])
 def test_submit_with_empty_value(item_id, delivery_location):
-    pass
+    response = OrdersHelpers(app).add_order(item_id, delivery_location)
+    message = json.loads(response.get_data(as_text=True))[
+        "message"]
+    if not item_id:
+        assert message == "either item_id is not set or empty"
+    if not delivery_location:
+        assert message == "either delivery_location is not set or empty"
 
 
 def test_submit_with_full_value():
-    pass
+    response = OrdersHelpers(app).add_order(1, "kla")
+    message = json.loads(response.get_data(as_text=True))[
+        "message"]
+    assert response.status_code == 200
