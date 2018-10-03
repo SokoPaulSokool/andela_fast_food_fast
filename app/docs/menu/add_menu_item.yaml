@@ -1,4 +1,4 @@
-Authentication docs
+Menu docs
 ---
 tags:
   - Menu
@@ -15,6 +15,10 @@ parameters:
     description: This endpoint is for user to add item to menu
 
     schema:
+      required:
+        - item_name
+        - item_description
+        - item_price
       properties:
         item_name:
           type: string
