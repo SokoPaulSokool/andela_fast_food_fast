@@ -10,7 +10,11 @@ from app.api.models.user_manage import User
 
 class TestOrdersTable(unittest.TestCase):
     def setUp(self):
+        create_tables().users_drop_table()
+        create_tables().menu_drop_table()
         create_tables().orders_drop_table()
+        create_tables().users_table()
+        create_tables().menu_table()
         create_tables().orders_table()
 
     def teardown(self):

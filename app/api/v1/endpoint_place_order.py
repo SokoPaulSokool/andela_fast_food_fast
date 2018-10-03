@@ -13,7 +13,7 @@ from flask_jwt_extended import (
 api_place_order = Blueprint('place_order', __name__)
 
 
-@api_place_order.route('/api/v1/orders', methods=['POST'])
+@api_place_order.route('/api/v1/users/orders', methods=['POST'])
 @jwt_required
 def place_order():
     """adds order all to orders list"""

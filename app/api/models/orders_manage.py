@@ -83,10 +83,18 @@ class CustomerOrders:
     def get_all_orders(self):
         """returns all orders in the list"""
         orders = QueryOrdersTable().get_all_orders()
-        print(orders)
+        new_list = []
         for key in range(len(orders)):
-            self.orders_list.append(OrderItem.fromTurple(orders[key]))
-        return self.orders_list
+            new_list.append(OrderItem.fromTurple(orders[key]))
+        return new_list
+
+    def get_orders_for_specific_user(self, user_id):
+        """returns all users orders orders in the list"""
+        orders = QueryOrdersTable().get_all_orders_for_user(user_id)
+        new_list = []
+        for key in range(len(orders)):
+            new_list.append(OrderItem.fromTurple(orders[key]))
+        return new_list
 
     def is_order_exist(self, id):
         """checks if order exists in the list"""
