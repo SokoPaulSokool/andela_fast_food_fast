@@ -20,6 +20,7 @@ api_get_menu = Blueprint('get_menu', __name__)
 
 @api_get_menu.route('/api/v1/menu', methods=['GET'])
 @jwt_required
+@swag_from('../../docs/menu/get_menu.yaml')
 def get_menu():
     """gets menu"""
     current_user = get_jwt_identity()
@@ -34,6 +35,7 @@ api_add_menu = Blueprint('add_menu', __name__)
 
 @api_add_menu.route('/api/v1/menu', methods=['POST'])
 @jwt_required
+@swag_from('../../docs/menu/add_menu_item.yaml')
 def add_menu():
     """adds menu"""
     current_user = get_jwt_identity()
