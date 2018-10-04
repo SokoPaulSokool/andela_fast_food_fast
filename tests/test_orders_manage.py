@@ -39,14 +39,14 @@ class TestOrders(unittest.TestCase):
     def test_place_single_order(self):
         self.orders_list.place_order(self.order)
         self.assertEqual(len(self.orders_list.get_all_orders()), 1)
-        self.assertEqual(self.orders_list.get_all_orders()[0].order_id, 1)
+        self.assertEqual(self.orders_list.get_all_orders()[0]["order_id"], 1)
 
     def test_place_multiple_order(self):
         self.orders_list.place_order(self.order)
         self.orders_list.place_order(self.order)
         self.orders_list.place_order(self.order)
         self.assertEqual(len(self.orders_list.get_all_orders()), 3)
-        self.assertEqual(self.orders_list.get_all_orders()[2].order_id, 3)
+        self.assertEqual(self.orders_list.get_all_orders()[2]["order_id"], 3)
 
     def test_getting_all_orders(self):
         self.orders_list.place_order(self.order)
@@ -58,7 +58,7 @@ class TestOrders(unittest.TestCase):
         self.orders_list.place_order(self.order)
         self.orders_list.place_order(self.order)
         self.assertEqual(self.orders_list.get_order(
-            1).created_at, str(self.order.created_at))
+            1)["created_at"], str(self.order.created_at))
 
     def test_getting_order_by_id_that_that_does_not_exist(self):
         self.orders_list.place_order(self.order)
@@ -84,7 +84,8 @@ class TestOrders(unittest.TestCase):
         self.orders_list.place_order(self.order)
         self.assertEqual(self.orders_list.change_status(
             1, "pending"), "status changed to pending")
-        self.assertEqual(self.orders_list.get_order(1).order_status, "pending")
+        self.assertEqual(self.orders_list.get_order(1)
+                         ["order_status"], "pending")
 
     def test_changing_order_status_of_oder_that_does_not_exist(self):
         self.orders_list.place_order(self.order)

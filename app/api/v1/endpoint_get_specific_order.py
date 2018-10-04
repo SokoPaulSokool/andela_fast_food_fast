@@ -23,8 +23,7 @@ def get_specific_order(order_id):
     current_user = get_jwt_identity()
     if current_user["user_type"] == 'admin':
         if request.method == "GET":
-            the_order = customer_orders.get_order(order_id).toJSON()
-            print(the_order)
+            the_order = customer_orders.get_order(order_id)
             if the_order == "order does not exist":
                 return MessageResponse.send(the_order, 404)
             else:
