@@ -4,6 +4,7 @@ from app.api.v1.customer_orders import customer_orders
 from app.api.models.database.crud_orders_table import QueryOrdersTable
 from app.api.models import MessageResponse
 from app.api.models.orders_manage import OrderItem
+from flasgger import swag_from
 from flask_jwt_extended import (
     create_access_token,
     verify_fresh_jwt_in_request,
@@ -18,6 +19,7 @@ api_get_all_orders = Blueprint('get_all_orders', __name__)
 
 @api_get_all_orders.route('/api/v1/orders', methods=['GET'])
 @jwt_required
+@swag_from("../../docs/orders/admin_get_all_orders.yaml")
 def get_all_orders():
     """gets all user orders"""
     current_user = get_jwt_identity()
@@ -38,6 +40,7 @@ api_get_all_users_orders = Blueprint('get_all_users_orders', __name__)
 
 @api_get_all_orders.route('/api/v1/users/orders', methods=['GET'])
 @jwt_required
+@swag_from("../../docs/orders/get_user_orders.yaml")
 def get_all_users_orders():
     """gets all user orders"""
     current_user = get_jwt_identity()

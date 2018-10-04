@@ -3,11 +3,13 @@ from app.api.models import MessageResponse
 from app.api.models.user_manage import User
 from app.api.models.database.crud_users_table import QueryUsersTable
 from re import match
+from flasgger import swag_from
 
 api_signup = Blueprint('signup', __name__)
 
 
 @api_signup.route('/api/v1/auth/signup', methods=['POST'])
+@swag_from("../../docs/auth/signup.yaml")
 def signup():
     """signs up user"""
     if request.method == 'POST':
@@ -42,13 +44,17 @@ def signup():
         new_user = User("", user_name, email, password, user_type)
 
         result = QueryUsersTable().add_user(new_user)
-        return jsonify({"user_id": result[0], "user_name": result[1], "email": result[2], "password": result[3], "account_type": result[4]}), 200
+        if result == "failed":
+            return "failed", 400
+        else:
+            return jsonify({"user_id": result[0], "user_name": result[1], "email": result[2], "password": result[3], "account_type": result[4]}), 200
 
 
 api_login = Blueprint('login', __name__)
 
 
 @api_signup.route('/api/v1/auth/login', methods=['POST'])
+@swag_from("../../docs/auth/login.yaml")
 def login():
     """Logs in up user"""
     if request.method == 'POST':

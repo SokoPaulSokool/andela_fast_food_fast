@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify, json
 from app.api.models import Order, CustomerOrders, MessageResponse, OrderItem
 from app.api.v1.customer_orders import customer_orders
+from flasgger import swag_from
 from flask_jwt_extended import (
     create_access_token,
     verify_fresh_jwt_in_request,
@@ -15,6 +16,7 @@ api_place_order = Blueprint('place_order', __name__)
 
 @api_place_order.route('/api/v1/users/orders', methods=['POST'])
 @jwt_required
+@swag_from("../../docs/orders/add_user_order.yaml")
 def place_order():
     """adds order all to orders list"""
     current_user = get_jwt_identity()

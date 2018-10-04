@@ -1,0 +1,37 @@
+Menu docs
+---
+tags:
+  - Menu
+parameters:
+  - name: Authorization
+    in: header
+    type: string
+    description: JWT token authorization
+    required: true
+    example: "Bearer "
+  - in: body
+    name: body
+    type: object
+    description: This endpoint is for user to add item to menu
+
+    schema:
+      required:
+        - item_name
+        - item_description
+        - item_price
+      properties:
+        item_name:
+          type: string
+          example: chicken
+        item_description:
+          type: string
+          example: "Well fried chicken"
+        item_price:
+          type: number
+          example: 1000
+responses:
+  200:
+    description: The user provides item_name, item_description, item_price for the item to be added
+
+  400:
+    description: Empty item_name, item_description, item_price

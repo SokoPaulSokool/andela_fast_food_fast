@@ -1,0 +1,18 @@
+Orders docs
+---
+tags:
+  - Orders
+parameters:
+  - name: Authorization
+    in: header
+    type: string
+    description: JWT token authorization
+    required: true
+    example: "Bearer "
+description: This endpoint is for admins to fetch all orders
+
+responses:
+  200:
+    description: This returns a list of all items on the orders
+  400:
+    description: ""

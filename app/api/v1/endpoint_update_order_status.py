@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify, json
 from app.api.models import Order, CustomerOrders, MessageResponse
 from app.api.v1.customer_orders import customer_orders
+from flasgger import swag_from
 from flask_jwt_extended import (
     create_access_token,
     verify_fresh_jwt_in_request,
@@ -15,6 +16,7 @@ api_update_order_status = Blueprint('update_order_status', __name__)
 
 @api_update_order_status.route('/api/v1/orders/<int:order_id>', methods=['PUT'])
 @jwt_required
+@swag_from('../../docs/orders/admin_update_order_status.yaml')
 def update_order_status(order_id):
     """updates order status"""
     current_user = get_jwt_identity()

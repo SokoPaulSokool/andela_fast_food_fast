@@ -1,0 +1,23 @@
+Orders docs
+---
+tags:
+  - Orders
+parameters:
+  - name: Authorization
+    in: header
+    type: string
+    description: JWT token authorization
+    required: true
+    example: "Bearer "
+  - name: order_id
+    in: path
+    description: This is the Id of the order item you want to view. You can get the ID from the /api/v1/orders endpoint
+    required: true
+    type: integer
+    format: int64
+description: This endpoint is for admins to a specific order
+
+responses:
+  200:
+    description: This returns a specific order
+  400: description

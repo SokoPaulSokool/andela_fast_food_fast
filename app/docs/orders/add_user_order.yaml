@@ -1,0 +1,34 @@
+Orders docs
+---
+tags:
+  - Orders
+parameters:
+  - name: Authorization
+    in: header
+    type: string
+    description: JWT token authorization
+    required: true
+    example: "Bearer "
+  - in: body
+    name: body
+    type: object
+    description: This endpoint is for customers to place an order
+
+    schema:
+      required:
+        - item_id
+        - delivery_location
+      type: object
+      properties:
+        item_id:
+          type: number
+          example: 1
+        delivery_location:
+          type: string
+          example: "Kampala"
+responses:
+  200:
+    description: The user provides item_id, delivery_location
+
+  400:
+    description: Empty item_id, delivery_location

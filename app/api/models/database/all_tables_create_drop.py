@@ -19,7 +19,7 @@ class create_tables():
             create_table_query = (
                 """CREATE TABLE IF NOT EXISTS  Users(
                 user_id SERIAL PRIMARY KEY, 
-                user_name VARCHAR(20),
+                user_name VARCHAR(255),
                 email VARCHAR(20),
                 password VARCHAR(260),
                 user_type VARCHAR(20)

@@ -8,8 +8,11 @@ from app.api.v1.endpoint_get_menu import api_get_menu, api_add_menu
 from app.api.v1.endpoint_authentication import api_signup, api_login
 import os
 from flask_jwt_extended import JWTManager
+from flasgger import Swagger
 
 app = Flask(__name__)
+
+Swagger(app)
 
 app.config['JWT_SECRET_KEY'] = 'jwt-secret-string'
 jwt = JWTManager(app)
