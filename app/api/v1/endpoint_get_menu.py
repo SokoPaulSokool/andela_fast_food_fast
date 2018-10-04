@@ -56,6 +56,10 @@ def add_menu():
             item_price = data.get('item_price')
             menu_item = Menu("", item_name, item_description, item_price)
             result = QueryMenuTable().add_item(menu_item)
-            return jsonify(result), 200
+            if result == "failed":
+                return "failed", 400
+            else:
+                return jsonify({"item_id": result[0], "item_name": result[1], "item_description": result[2], "item_price": result[3]}), 200
+
     else:
         return MessageResponse().send("You need to be an admin to access this route", 406)

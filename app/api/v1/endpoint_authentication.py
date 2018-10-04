@@ -44,8 +44,6 @@ def signup():
         new_user = User("", user_name, email, password, user_type)
 
         result = QueryUsersTable().add_user(new_user)
-        print(data)
-        print(result)
         if result == "failed":
             return "failed", 400
         else:

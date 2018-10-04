@@ -27,6 +27,7 @@ def get_specific_order(order_id):
             if the_order == "order does not exist":
                 return MessageResponse.send(the_order, 404)
             else:
-                return jsonify(customer_orders.get_order(order_id).toJSON()), 200
+                return jsonify({"order_id": result[0], "user_id": result[1], "item_id": result[2], "order_status": result[3], "delivery_location": result[4], "created_at": result[5], "edited_at": result[6]}), 200
+
     else:
         return MessageResponse().send("You need to be an admin to access this route", 406)
