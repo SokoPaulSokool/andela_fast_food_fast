@@ -27,8 +27,11 @@ def get_menu():
     if current_user:
         if request.method == "GET":
             result = QueryMenuTable().get_all_menu_items()
-            return jsonify(result), 200
-
+            items = []
+            for key in range(len(result)):
+                item = result[key]
+                items.append({"item_id": item[0], "item_name": item[1], "item_description": item[2], "item_price": item[3]})
+            return jsonify(items), 200
 
 api_add_menu = Blueprint('add_menu', __name__)
 

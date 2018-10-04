@@ -29,7 +29,6 @@ def get_all_orders():
             for key in range(len(customer_orders.get_all_orders())):
                 all_orders.append(
                     customer_orders.get_all_orders()[key].toJSON())
-
             return jsonify(all_orders), 200
     else:
         return MessageResponse().send("You need to be an admin to access this route", 406)
@@ -50,7 +49,7 @@ def get_all_users_orders():
             all_orders = []
             user_orders = customer_orders.get_orders_for_specific_user(user_id)
             for key in range(len(user_orders)):
-                all_orders.append(user_orders[key].toJSON())
+                all_orders.append(user_orders[key].toJSON())\
 
             return jsonify(all_orders), 200
     else:

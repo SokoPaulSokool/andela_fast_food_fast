@@ -47,7 +47,7 @@ def signup():
         if result == "failed":
             return "failed", 400
         else:
-            return jsonify({"user_id": result[0], "user_name": result[1], "email": result[2], "password": result[3], "account_type": result[4]}), 200
+            return jsonify({"user_id": result[0], "user_name": result[1], "email": result[2], "account_type": result[4]}), 200
 
 
 api_login = Blueprint('login', __name__)

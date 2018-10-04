@@ -2,6 +2,7 @@ from app.api.models.database.crud_users_table import QueryUsersTable
 from flask import Blueprint, request, jsonify, json
 from app.api.models.message_response import MessageResponse
 from passlib.hash import pbkdf2_sha256 as sha256
+import datetime
 from flask_jwt_extended import (
     create_access_token,
     create_refresh_token,
@@ -43,7 +44,9 @@ class User:
                     identity={
                         "user_id": check_result[0],
                         "user_name": check_result[1],
-                        "user_type": check_result[4]})
+                        "user_type": check_result[4]},
+                        expires_delta= datetime.timedelta(minutes=30)
+                        )
                 message = check_result[1] + \
                     " has been authorised."
                 return jsonify({
