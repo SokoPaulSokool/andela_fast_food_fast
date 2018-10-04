@@ -53,10 +53,11 @@ def add_menu():
                 return MessageResponse.send("either item_description is not set or empty", 406)
             if not data.get('item_price'):
                 return MessageResponse.send("either item_price is not set or empty", 406)
-
+            item_price = data.get('item_price')
             item_name = data.get('item_name')
             item_description = data.get('item_description')
-            item_price = data.get('item_price')
+            if not isinstance(item_price,(int)):
+                return MessageResponse.send("price must must be a nummber", 406) 
             menu_item = Menu("", item_name, item_description, item_price)
             result = QueryMenuTable().add_item(menu_item)
             if result == "failed":

@@ -45,7 +45,9 @@ def signup():
 
         result = QueryUsersTable().add_user(new_user)
         if result == "failed":
-            return "failed", 400
+            return jsonify({"message":"failed"}), 400
+        elif result == "user exists":
+            return jsonify({"message":"user exists"}), 400
         else:
             return jsonify({"user_id": result[0], "user_name": result[1], "email": result[2], "account_type": result[4]}), 200
 
