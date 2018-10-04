@@ -1,7 +1,3 @@
-# andela_fast_food_fast
-
-Fast-Food-Fast is a food delivery service app for a restaurant.
-
 ### Badges
 
 [![Build Status](https://travis-ci.com/SokoPaulSokool/andela_fast_food_fast.svg?branch=challenge3)](https://travis-ci.com/SokoPaulSokool/andela_fast_food_fast)
@@ -11,29 +7,54 @@ Fast-Food-Fast is a food delivery service app for a restaurant.
 
 # APIs for Fast Food Fast
 
-These are APIs to be used to interface the fuctionality of the Fast Food Fast application
+Fast-Food-Fast is a food delivery service app for a restaurant.
 
-## Functionality
+These are APIs to be used to interface the fuctionality of the Fast Food Fast application.
 
-- Placing order for food
-- Obtaining a list of orders.
-- Fetching a specific order.
-- Updating the order status.
-- Delete order
+## Functionality of the API
+
+- A new user signs up as either admin or customer
+- A user who has an account can log in
+
+### Customers can
+
+- Place order for food
+- View their order history
+- View items on the menu
+
+### Admins can
+
+- Get all orders made
+- Get a specific order
+- Get a specific order
+- Change the status of a specific order
+- Add items to the menu
 
 These are the endpoints
 
-| METHOD | Endpoint          | Description                                                          | Body (json)                                                    |
-| ------ | :---------------- | -------------------------------------------------------------------- | -------------------------------------------------------------- |
-| GET    | /api/v1/orders/   | Get all orders                                                       |                                                                |
-| GET    | /api/v1/orders/id | Get specific orders using an id                                      |                                                                |
-| POST   | /api/v1/orders    | Place a new orders                                                   | order_title, order_description ,order_price ,delivery_location |
-| PUT    | /api/v1/orders/id | Update a specific orders status to 'complete','pending','incomplete' | order_status                                                   |
-| DELETE | /api/v1/orders/id | Delete a specific entry using an id                                  |                                                                |
+| METHOD | Endpoint            | Description                                                          | Body (json)         |
+| ------ | :------------------ | -------------------------------------------------------------------- | ------------------- |
+| POST   | /api/v1/auth/login  | Provides a token to be used by a user as they access other endpoints | user_name, password |
+| POST   | /api/v1/auth/signup | Signs up a user for an account                                       |                     |
 
-APIs are Hosted at https://andela-fast-food-fast.herokuapp.com
+| METHOD | Endpoint             | Description                                           | Body (json)                |
+| ------ | :------------------- | ----------------------------------------------------- | -------------------------- |
+| POST   | /api/v1/users/orders | Places order for an item in the menu for the customer | item_id, delivery_location |
+| GET    | /api/v1/users/orders | Gets the order histry of the customer                 |                            |
+| GET    | /api/v1/menu         | Gets all items on the menu                            |                            |
 
-Sample get all orders [https://andela-fast-food-fast.herokuapp.com/api/v1/orders](https://andela-fast-food-fast.herokuapp.com/api/v1/orders)
+For Admins only
+
+| METHOD | Endpoint                 | Description                                                           | Body (json)                             |
+| ------ | :----------------------- | --------------------------------------------------------------------- | --------------------------------------- |
+| GET    | /api/v1/orders/          | Gets all orders made by customers                                     |                                         |
+| GET    | /api/v1/orders/<orderId> | Get specific order using an id                                        |                                         |
+| PUT    | /api/v1/orders/<orderId> | Updates a specific orders status to 'complete','pending','incomplete' | order_status                            |
+| POST   | /api/v1/menu             | Adds food item to the menu                                            | item_name, item_description, item_price |
+
+#### APIs are Hosted at [https://andela-fast-food-fast.herokuapp.com](https://andela-fast-food-fast.herokuapp.com)
+
+#### Documentation for the APIs is found here [https://andela-fast-food-fast.herokuapp.com/apidocs](https://andela-fast-food-fast.herokuapp.com/apidocs)
 
 ## Setting Up for Development
 
@@ -42,6 +63,8 @@ These are instructions for setting up Fast Food Fast app in a development enivor
 ### Prerequisites
 
 - Python 3.6
+
+- Access to postgres database
 
 - Make a directory on your computer and a virtual environment
 
@@ -62,16 +85,31 @@ These are instructions for setting up Fast Food Fast app in a development enivor
   $ git clone https://github.com/SokoPaulSokool/andela_fast_food_fast.git
   ```
 
-* switch to challenge2 branch
+* switch to challenge3 branch
 
   ```
-  $ git checkout challenge2
+  $ git checkout challenge3
   ```
 
 * Install necessary requirements
 
   ```
   $ pip install -r requirements.txt
+  ```
+
+* Set up connection to your local postgress
+
+  ```
+  $ Navigate to app/api/models/database
+  ```
+
+  ```
+  $ Open connection.py and adjust the fields below to connect to your local database
+        database='',
+        user='',
+        password='',
+        host="",
+        port='5432'
   ```
 
 * Run development server

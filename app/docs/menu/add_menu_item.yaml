@@ -16,7 +16,7 @@ parameters:
 
     schema:
       required:
-        - item_name
+        - item_name 
         - item_description
         - item_price
       properties:
