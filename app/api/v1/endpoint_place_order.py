@@ -32,6 +32,8 @@ def place_order():
 
             item_id = data.get('item_id')
             delivery_location = data.get('delivery_location')
+            if not isinstance(item_id,(int)):
+                return MessageResponse.send("item_id must must be a nummber", 406) 
 
             new_order = OrderItem("", user_id, item_id, delivery_location)
 

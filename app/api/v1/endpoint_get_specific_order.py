@@ -23,11 +23,13 @@ def get_specific_order(order_id):
     current_user = get_jwt_identity()
     if current_user["user_type"] == 'admin':
         if request.method == "GET":
-            the_order = customer_orders.get_order(order_id)
+            the_order = customer_orders.get_order(order_id).toJSON()
+            print(the_order)
             if the_order == "order does not exist":
                 return MessageResponse.send(the_order, 404)
             else:
-                return jsonify({"order_id": result[0], "user_id": result[1], "item_id": result[2], "order_status": result[3], "delivery_location": result[4], "created_at": result[5], "edited_at": result[6]}), 200
+                # return jsonify({"order_id": the_order, "user_id": the_order[1], "item_id": the_order[2], "order_status": the_order[3], "delivery_location": the_order[4], "created_at": the_order[5], "edited_at": the_order[6]}), 200
+                return jsonify(the_order), 200
 
     else:
         return MessageResponse().send("You need to be an admin to access this route", 406)
