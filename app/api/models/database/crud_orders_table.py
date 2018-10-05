@@ -36,7 +36,7 @@ class QueryOrdersTable():
         cur = self.conn.cursor()
         try:
             cur.execute(
-                """SELECT * from Orders WHERE order_id = %s  """,
+                """SELECT * from Orders o INNER JOIN Users u ON o.user_Id = u.user_Id INNER JOIN Menu m ON o.item_id = m.item_id WHERE order_id = %s  """,
                 [order_id])
             rows = cur.fetchall()
             return rows[0]
@@ -49,7 +49,7 @@ class QueryOrdersTable():
         cur = self.conn.cursor()
         try:
             cur.execute(
-                """SELECT * from Orders""")
+                """SELECT * from Orders o INNER JOIN Users u ON o.user_Id = u.user_Id INNER JOIN Menu m ON o.item_id = m.item_id""")
             rows = cur.fetchall()
 
             return rows
@@ -57,14 +57,16 @@ class QueryOrdersTable():
             print(error)
             return "failed"
 
-    def get_all_orders_for_user(self, user_id):
+    def get_all_orders_for_user(self, _id):
         """Get all orders for specific user"""
+        print(_id)
         cur = self.conn.cursor()
         try:
             cur.execute(
-                """SELECT * from Orders WHERE user_id = %s  """,
-                [user_id])
+                """SELECT * from Orders o  INNER JOIN Menu m ON o.item_id = m.item_id WHERE user_id = %s  """,
+                [_id])
             rows = cur.fetchall()
+            print(rows)
             return rows
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)

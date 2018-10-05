@@ -45,6 +45,27 @@ class OrderItem:
         order.edited_at = order_item_turple[6]
         return order
 
+    @staticmethod
+    def from_tables_joined(order_item_turple):
+
+        return {"order_id": order_item_turple[0], "user_id":  order_item_turple[1],
+                "item_id":  order_item_turple[2], "delivery_location":  order_item_turple[4],
+                "created_at":  order_item_turple[5], "edited_at": order_item_turple[6],
+                "order_status":  order_item_turple[3], "user_name":  order_item_turple[8],
+                "user_email":  order_item_turple[9], "item_name":  order_item_turple[13],
+                "item_description":  order_item_turple[14], "item_price":  order_item_turple[15]
+                }
+
+    @staticmethod
+    def from_menu_table_joined(order_item_turple):
+
+        return {"order_id": order_item_turple[0], "user_id":  order_item_turple[1],
+                "item_id":  order_item_turple[2], "delivery_location":  order_item_turple[4],
+                "created_at":  order_item_turple[5], "edited_at": order_item_turple[6],
+                "order_status":  order_item_turple[3], "item_name":  order_item_turple[8],
+                "item_description":  order_item_turple[9], "item_price":  order_item_turple[10]
+                }
+
 
 class Order:
     """creates order"""
@@ -85,7 +106,7 @@ class CustomerOrders:
         orders = QueryOrdersTable().get_all_orders()
         new_list = []
         for key in range(len(orders)):
-            new_list.append(OrderItem.fromTurple(orders[key]))
+            new_list.append(OrderItem.from_tables_joined(orders[key]))
         return new_list
 
     def get_orders_for_specific_user(self, user_id):
@@ -93,7 +114,7 @@ class CustomerOrders:
         orders = QueryOrdersTable().get_all_orders_for_user(user_id)
         new_list = []
         for key in range(len(orders)):
-            new_list.append(OrderItem.fromTurple(orders[key]))
+            new_list.append(OrderItem.from_menu_table_joined(orders[key]))
         return new_list
 
     def is_order_exist(self, id):
@@ -111,7 +132,7 @@ class CustomerOrders:
         if order_result == "failed":
             return "order does not exist"
         else:
-            return OrderItem.fromTurple(order_result)
+            return OrderItem.from_tables_joined(order_result)
 
     def delete_order(self, id):
         """deletes order by id if it exists"""

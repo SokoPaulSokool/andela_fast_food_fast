@@ -15,9 +15,10 @@ parameters:
     required: true
     type: integer
     format: int64
-description: This endpoint is for admins to a specific order
+description: This endpoint is for admins to fetch all orders
 
 responses:
   200:
-    description: This returns a specific order
-  400: description
+    description: This returns  the order
+  400:
+    description: ""
