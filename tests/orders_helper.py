@@ -52,7 +52,6 @@ class OrdersHelpers():
         test_client = app.test_client()
         response = test_client.post('/api/v1/auth/login', data=json.dumps(dict(
             email="sopapaso@gmail.com", password="password",)), content_type='application/json')
-        print(json.loads(response.get_data(as_text=True)))
         return json.loads(response.get_data(as_text=True))["access_token"]
 
     @staticmethod
@@ -61,5 +60,4 @@ class OrdersHelpers():
         test_client = app.test_client()
         response = test_client.post('/api/v1/auth/login', data=json.dumps(dict(
             email="paul@gmail.com", password="password12",)), content_type='application/json')
-        print(json.loads(response.get_data(as_text=True)))
         return json.loads(response.get_data(as_text=True))["access_token"]

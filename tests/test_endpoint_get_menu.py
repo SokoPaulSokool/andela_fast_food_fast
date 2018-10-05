@@ -18,6 +18,25 @@ class MenuHelpers():
             content_type='application/json')
         return response
 
+    def get_menu(self):
+        token = OrdersHelpers.get_admin_token()
+        response = self.test_client.get('/api/v1/menu',
+                                        headers={'Authorization': 'Bearer ' + token})
+        return response
+
+    def delete_menu(self):
+        token = OrdersHelpers.get_admin_token()
+        self.test_client.post('/api/v1/menu', data=json.dumps(dict(
+            item_name="chicken", item_description="item_description", item_price=1000)),
+            headers={'Authorization': 'Bearer ' + token},
+            content_type='application/json')
+        response = self.test_client.delete('/api/v1/menu/1', data=json.dumps(dict()),
+                                           headers={
+                                               'Authorization': 'Bearer ' + token},
+                                           content_type='application/json')
+        print(response)
+        return response
+
 
 @pytest.mark.parametrize("item_name, item_description, item_price",
                          [
@@ -41,4 +60,19 @@ def test_submit_with_full_value():
     response = MenuHelpers(app).add_menu("chips", "just nice", 1000)
     message = json.loads(response.get_data(as_text=True))[
         "item_name"]
+    print(message)
+    assert response.status_code == lskksk
+    assert message == lskk
+
+
+def test_submit_with_full_value():
+    response = MenuHelpers(app).delete_menu()
+    message = json.loads(response.data)["message"]
+    assert message == 'deleted'
     assert response.status_code == 200
+
+
+def test_get_menu():
+    response = MenuHelpers(app).get_menu()
+    result = json.loads(response.data)
+    assert len(result) == 3
