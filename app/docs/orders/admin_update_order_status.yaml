@@ -11,7 +11,7 @@ parameters:
     example: "Bearer "
   - name: order_id
     in: path
-    description: This is the Id of the order item you want to view. You can get the ID from the /api/v1/orders endpoint
+    description: This is the Id of the order item you want to change its status. You can get the ID from the /api/v1/orders endpoint
     required: true
     type: integer
     format: int64
