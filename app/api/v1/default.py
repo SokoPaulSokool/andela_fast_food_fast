@@ -5,5 +5,5 @@ api_default = Blueprint('default', __name__)
 
 @api_default.route('/', methods=['GET'])
 def default():
-    """Logs in up user"""
+    """Redire"""
     return redirect('/apidocs')
