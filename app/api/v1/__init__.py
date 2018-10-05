@@ -7,6 +7,7 @@ from app.api.v1.endpoint_delete_order import api_delete_order
 from app.api.v1.endpoint_get_menu import api_get_menu, api_add_menu
 from app.api.v1.endpoint_authentication import api_signup, api_login
 from app.api.v1.default import api_default
+from app.api.v1.endpoint_delete_menu import api_delete_menu
 import os
 from flask_jwt_extended import JWTManager
 from flasgger import Swagger
@@ -29,6 +30,7 @@ app.register_blueprint(api_signup)
 app.register_blueprint(api_login)
 app.register_blueprint(api_get_all_users_orders)
 app.register_blueprint(api_default)
+app.register_blueprint(api_delete_menu)
 
 app.config['SECRET_KEY'] = os.environ.get(
     'SECRET_KEY', 'sokool-1234567')

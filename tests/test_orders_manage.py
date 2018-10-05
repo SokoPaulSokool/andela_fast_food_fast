@@ -58,7 +58,7 @@ class TestOrders(unittest.TestCase):
         self.orders_list.place_order(self.order)
         self.orders_list.place_order(self.order)
         self.assertEqual(self.orders_list.get_order(
-            1)["created_at"], str(self.order.created_at))
+            1)["delivery_location"], str(self.order.delivery_location))
 
     def test_getting_order_by_id_that_that_does_not_exist(self):
         self.orders_list.place_order(self.order)
