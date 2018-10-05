@@ -15,7 +15,8 @@ class OrdersHelpers():
         self.test_client = app.test_client()
 
     def add_order(self, item_id, delivery_location):
-        QueryUsersTable().add_user(User("", "soko", "sopapaso73@gmail.com", "1234", "admin"))
+        QueryUsersTable().add_user(
+            User("", "soko", "kool@gmail.com", "password", "admin"))
         response = self.test_client.post('/api/v1/users/orders', data=json.dumps(dict(
             item_id=item_id, delivery_location=delivery_location)),  headers={
             'Authorization': 'Bearer ' + self.get_token()}, content_type='application/json')
@@ -25,14 +26,14 @@ class OrdersHelpers():
     def get_token(self):
         test_client = app.test_client()
         response = test_client.post('/api/v1/auth/login', data=json.dumps(dict(
-            email="sopapaso73@gmail.com", password="1234",)), content_type='application/json')
+            email="kool@gmail.com", password="password",)), content_type='application/json')
         return json.loads(response.get_data(as_text=True))["access_token"]
 
 
 @pytest.mark.parametrize("item_id, delivery_location",
                          [
                              ("", "delivery_location"),
-                             (1, "")
+                             ("1", "")
                          ])
 def test_submit_with_empty_value(item_id, delivery_location):
     response = OrdersHelpers(app).add_order(item_id, delivery_location)

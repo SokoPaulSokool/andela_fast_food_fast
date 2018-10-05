@@ -17,7 +17,8 @@ class TestUpdateOrderStatus(unittest.TestCase):
         create_tables().menu_table()
         create_tables().orders_table()
         QueryMenuTable().add_item(Menu("", "chicken", "fried chicken", 10000))
-        QueryUsersTable().add_user(User("", "soko", "sopapaso73@gmail.com", "1234", "admin"))
+        QueryUsersTable().add_user(
+            User("", "soko", "sopapaso73@gmail.com", "password", "admin"))
         self.order = OrderItem("", 1, 1, "kla")
         CustomerOrders().place_order(self.order)
 
@@ -29,7 +30,7 @@ class TestUpdateOrderStatus(unittest.TestCase):
     def get_token(self):
         test_client = app.test_client()
         response = test_client.post('/api/v1/auth/login', data=json.dumps(dict(
-            email="sopapaso73@gmail.com", password="1234",)), content_type='application/json')
+            email="sopapaso73@gmail.com", password="password",)), content_type='application/json')
         return json.loads(response.get_data(as_text=True))["access_token"]
 
     def test_sending_empty_order_status(self):
