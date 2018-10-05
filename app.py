@@ -3,11 +3,6 @@ from flask import redirect
 from app.api.models.database.all_tables_create_drop import create_tables
 
 
-@app.route('/')
-def index():
-    return redirect('/apidocs')
-
-
 if __name__ == '__main__':
     create_tables().users_drop_table()
     create_tables().menu_drop_table()
