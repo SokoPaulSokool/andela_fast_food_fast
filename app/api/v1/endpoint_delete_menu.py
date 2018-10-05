@@ -20,6 +20,7 @@ api_delete_menu = Blueprint('delete_menu', __name__)
 
 @api_delete_menu.route('/api/v1/menu/<int:order_id>', methods=['DELETE'])
 @jwt_required
+@swag_from('../../docs/menu/delete_menu.yaml')
 def delete_menu(order_id):
     """updates update menu"""
     current_user = get_jwt_identity()

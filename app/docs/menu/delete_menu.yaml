@@ -1,0 +1,24 @@
+Orders docs
+---
+tags:
+  - Menu
+parameters:
+  - name: Authorization
+    in: header
+    type: string
+    description: JWT token authorization
+    required: true
+    example: "Bearer "
+  - name: order_id
+    in: path
+    description: This is the Id of the  to delete item. You can get the ID from the /api/v1/menu endpoint
+    required: true
+    type: integer
+    format: int64
+
+responses:
+  200:
+    description: The user provides order_status
+
+  400:
+    description: Empty item_id, delivery_location
