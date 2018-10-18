@@ -1,0 +1,35 @@
+Authentication docs
+---
+tags:
+  - User Authentication
+parameters:
+  - in: body
+    name: body
+    type: object
+    description: This endpoint is for user signup. The user provides user_name,email, password, user_type a for them to signup
+
+    schema:
+      required:
+        - user_name
+        - email
+        - password
+        - account_type
+      type: object
+      properties:
+        user_name:
+          type: string
+          example: paul
+        email:
+          type: string
+          example: sokopaul@example.com
+        password:
+          type: string
+          example: andela1234
+        account_type:
+          type: string
+          example: admin
+responses:
+  200:
+    description: The user provides user_name,email, password, user_type a for them to signup
+  400:
+    description: Empty password or email field.

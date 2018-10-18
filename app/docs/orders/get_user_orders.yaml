@@ -1,0 +1,18 @@
+Orders docs
+---
+tags:
+  - Orders
+parameters:
+  - name: Authorization
+    in: header
+    type: string
+    description: JWT token authorization
+    required: true
+    example: "Bearer "
+description: This endpoint is for users to view their order history
+
+responses:
+  200:
+    description: This returns a list of all orders for a specific user
+  400:
+    ? description
