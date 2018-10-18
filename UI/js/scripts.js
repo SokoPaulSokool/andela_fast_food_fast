@@ -7,10 +7,12 @@ try {
 } catch (err) {}
 try {
     document.getElementById('submit_button').addEventListener('click', function(e) {
+        // create account
         e.preventDefault();
         openForms();
         document.getElementById("signup-form").style.display = "none";
         document.getElementById("login-form").style.display = "block";
+
     });
 } catch (err) {}
 try {
@@ -19,6 +21,7 @@ try {
         openForms();
         document.getElementById("login-form").style.display = "none";
         document.getElementById("signup-form").style.display = "block";
+
     });
 } catch (err) {}
 try {
@@ -41,6 +44,8 @@ try {
         // switch to signup form
         document.getElementById("login-form").style.display = "none";
         document.getElementById("signup-form").style.display = "block";
+
+
     });
 } catch (err) {}
 
@@ -205,4 +210,62 @@ function replaceOrAddNewClass(element, oldClass, newClass) {
         }
 
     }
+}
+
+baseUrl = 'http://localhost:5000/api/v1/';
+
+function postdata(endpoint, data) {
+    return fetch(baseUrl + endpoint, {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+}
+
+function getdata(endpoint) {
+    return fetch(baseUrl + endpoint, {
+        method: 'get',
+    });
+}
+
+function putdata(endpoint, data) {
+    return fetch(baseUrl + endpoint, {
+        method: 'put',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+}
+
+function deletedata(endpoint, data) {
+    return fetch(baseUrl + endpoint, {
+        method: 'delete',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+}
+
+function storeToken(token) {
+    if (typeof(Storage) !== "undefined") {
+        // Store
+        localStorage.setItem("token", token);
+        return true;
+        // Retrieve
+        // document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+    } else {
+        return false;
+        // document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+    }
+}
+
+function getToken() {
+    return localStorage.getItem("token");
 }
