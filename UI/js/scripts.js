@@ -10,8 +10,32 @@ try {
         // create account
         e.preventDefault();
         openForms();
-        document.getElementById("signup-form").style.display = "none";
-        document.getElementById("login-form").style.display = "block";
+        formElements = document.getElementById("signup-form");
+        var user_name = formElements.getElementsByTagName('input')[0].value;
+        var email = formElements.getElementsByTagName('input')[1].value;
+        var password = formElements.getElementsByTagName('input')[2].value;
+        console.log(user_name);
+
+        endpoint = 'auth/signup';
+        data = {
+            "account_type": "customer",
+            "email": email,
+            "password": password,
+            "user_name": user_name
+        };
+        postdata(endpoint, data).then(res => res.json())
+            .then(res => {
+                if (res.message == undefined) {
+                    if (res.user_name == user_name) {
+                        document.getElementById('signup_message').innerHTML = "success";
+                        document.getElementById("signup-form").style.display = "none";
+                        document.getElementById("login-form").style.display = "block";
+                    }
+                } else {
+
+                    document.getElementById('signup_message').innerHTML = res.message;
+                }
+            });
 
     });
 } catch (err) {}
