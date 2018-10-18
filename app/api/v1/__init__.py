@@ -11,8 +11,10 @@ from app.api.v1.endpoint_delete_menu import api_delete_menu
 import os
 from flask_jwt_extended import JWTManager
 from flasgger import Swagger
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 Swagger(app)
 
