@@ -1,0 +1,385 @@
+body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/* accent #ffb80e  primary #982121 secondary #ff611d */
+
+
+/* navigation styles */
+
+ul {
+    list-style: none;
+}
+
+nav {
+    padding: 40px;
+}
+
+nav ul {
+    min-height: 60px;
+    margin: 0;
+}
+
+nav li {
+    position: relative;
+    margin: 10px 20px;
+    padding: 10px 20px;
+}
+
+nav li:hover {
+    background-color: #ffb80e;
+    border-radius: 10px;
+    color: white;
+}
+
+
+/* main section */
+
+#image-back {
+    background-image: url('../img/fast_food.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    transform: scaleX(-1);
+}
+
+#description {
+    position: absolute;
+    top: 50%;
+    min-height: 40vh;
+    transform: translateY(-30%);
+    background: #ff611d;
+    text-align: center;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 20px;
+    opacity: 0.95;
+    left: 0;
+}
+
+#description h3 {
+    font-weight: 400;
+}
+
+#description h2 {
+    font-weight: 600;
+}
+
+#description h1 {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 2em;
+}
+
+
+/* forms */
+
+#all-forms {
+    position: absolute;
+    display: block;
+    right: 0px;
+    width: 0vw;
+    height: 100vh;
+    transition: 0.4s;
+    margin: 2px 0px;
+    /* transform: translateX(50px) */
+}
+
+form {
+    /* min-height: 40vh; */
+    padding: 20px 10px;
+    margin: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+#close {
+    top: 2px;
+    left: 2px;
+    z-index: 1;
+    background: #982121;
+}
+
+.fields {
+    width: 100%;
+    display: flex;
+    margin: 20px 5px;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.label {
+    min-width: 20%;
+    margin: 5px 2px;
+}
+
+.fields input {
+    width: 60%;
+}
+
+input {
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-size: 1.4em;
+    color: #1d1d1d;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    background: #ffffff;
+    box-sizing: border-box;
+}
+
+#create_account,
+#login_now {
+    margin: 10px 2px;
+}
+
+
+/* orders style */
+
+.order-item {
+    min-width: 10%;
+    min-height: 200px;
+    border: 1px solid #ff611d;
+    border-radius: 10px;
+    padding: 8px;
+    margin: 10px;
+}
+
+.order-image {
+    background-image: url('../img/fast_food.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: relative;
+    width: 100%;
+    min-height: 150px;
+}
+
+.order-tittle {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin: 10px 5px;
+}
+
+.order-decription {
+    font-weight: 400;
+    font-size: 0.9em;
+    margin: 10px 2px;
+}
+
+.order-button {
+    width: 40px;
+    height: auto;
+}
+
+.order-price {
+    text-align: start;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin: 10px 5px;
+}
+
+.orders-shell {
+    height: 85vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+#dialog-view {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+}
+
+.my-dialog {
+    width: 70vw;
+    min-height: 40vh;
+    left: 0;
+}
+
+.cover {
+    background: #982121;
+    opacity: 0.6;
+    position: absolute;
+}
+
+.show_my_orders {
+    width: 100vw !important;
+    display: block !important;
+}
+
+.hide_my_orders {
+    width: 0 !important;
+    display: none !important;
+}
+
+
+/* order images */
+
+.order-1 {
+    background-image: url('../img/orders/BACON\ CHEESEBURGER.jpg');
+}
+
+.order-2 {
+    background-image: url('../img/orders/sandwich.jpg');
+}
+
+.order-3 {
+    background-image: url('../img/orders/pita.jpg');
+}
+
+.order-4 {
+    background-image: url('../img/orders/onion\ ring.jpg');
+}
+
+.order-5 {
+    background-image: url('../img/orders/humburger.jpg');
+}
+
+.order-6 {
+    background-image: url('../img/orders/FROSTY.jpg');
+}
+
+.order-7 {
+    background-image: url('../img/orders/fried\ chicken.jpg');
+}
+
+.order-8 {
+    background-image: url('../img/orders/french\ fries.jpg');
+}
+
+.order-9 {
+    background-image: url('../img/orders/DOUBLE-DOUBLE.jpg');
+}
+
+.order-10 {
+    background-image: url('../img/orders/CURLY\ FRIES.jpg');
+}
+
+.order-11 {
+    background-image: url('../img/orders/chickhen\ nugget.jpg');
+}
+
+.order-12 {
+    background-image: url('../img/orders/CHICKEN\ SANDWICH.jpg');
+}
+
+.order-13 {
+    background-image: url('../img/orders/CHICKEN\ QUESADILLA.jpg');
+}
+
+.order-14 {
+    background-image: url('../img/orders/CHICKEN\ POPEYES.jpg');
+}
+
+.order-15 {
+    background-image: url('../img/orders/CHERRY\ LIMEADE.jpg');
+}
+
+
+/* menu list */
+
+#menu_list {
+    display: none;
+}
+
+@media screen and (max-width: 680px) {
+    /* tablets width */
+    nav {
+        padding: 0px;
+    }
+    h1 {
+        padding: 0;
+        margin: 5px;
+    }
+    nav ul {
+        flex-direction: column;
+        align-self: center;
+        min-height: 20px;
+        margin: 0 auto;
+        padding: 0;
+    }
+    nav li {
+        width: 100%;
+        text-align: center;
+        margin: 3px 9px;
+        padding: 6px 9px;
+    }
+    #description {
+        width: 100%;
+    }
+    .fields {
+        flex-direction: column;
+    }
+    #all-forms {
+        width: 80vw;
+    }
+    .label {
+        margin: 2px 1px;
+    }
+    input {
+        font-size: 1.2em;
+    }
+}
+
+.shadow {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+
+/* On mouse-over, add a deeper shadow */
+
+.shadow:hover {
+    box-shadow: 0 8px 16px 0 #ff611d;
+}
+
+.horizontal-vertical {
+    flex-direction: column;
+}
+
+@media screen and (max-width: 900px) {
+    #my_orders {
+        width: 0vw;
+        display: none;
+    }
+    #all-orders {
+        width: 100vw;
+        display: block;
+    }
+    .my-dialog {
+        width: 100vw;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    #my_orders {
+        width: 25vw !important;
+        display: block !important;
+    }
+    #all-orders {
+        width: 75vw !important;
+        display: block !important;
+    }
+    .horizontal-vertical {
+        flex-direction: row;
+    }
+}
