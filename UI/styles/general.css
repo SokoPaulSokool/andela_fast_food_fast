@@ -1,0 +1,344 @@
+/* these are styles designed to siplify development in html by giving one classes that make it easy to position elements in the dom*/
+
+
+/* full view port class */
+
+.view {
+    width: 100vw;
+    min-height: 100vh;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px;
+    width: 200px;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.button-small {
+    padding: 2px;
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background: #ffffff;
+    color: #7c3706;
+}
+
+
+/* Texts */
+
+.text1 {
+    margin: 9px 5px;
+    font-weight: 700;
+}
+
+.text2 {
+    margin: 9px 5px;
+    font-weight: 700;
+}
+
+.text3 {
+    margin: 3px 7px;
+    font-weight: bold;
+}
+
+.text4 {
+    margin: 3px 7px;
+    font-weight: 400;
+    font-size: 0.9em;
+}
+
+
+/* color helper classes */
+
+.sokool-primary-background {
+    background-color: #982121;
+}
+
+.sokool-primary-color {
+    color: #982121;
+}
+
+.sokool-accent-background {
+    background-color: #ffb80e;
+}
+
+.sokool-accent-color {
+    color: #ffb80e;
+}
+
+.sokool-secondary-background {
+    background-color: #ff611d !important;
+}
+
+.sokool-secondary-color {
+    color: #ff611d;
+}
+
+.sokool-black-background {
+    background-color: #7c3706;
+}
+
+.sokool-black-color {
+    color: #000000;
+}
+
+.sokool-grey-background {
+    background-color: #cccccc;
+}
+
+.sokool-grey-color {
+    color: #cccccc;
+}
+
+.sokool-white-background {
+    background-color: #ffffff;
+}
+
+.sokool-white-color {
+    color: #ffffff;
+}
+
+.sokool-p-1 {
+    padding: 8px;
+}
+
+.sokool-p-2 {
+    padding: 10px;
+}
+
+.sokool-p-3 {
+    padding: 15px;
+}
+
+.sokool-p-4 {
+    padding: 20px;
+}
+
+.sokool-p-5 {
+    padding: 30px;
+}
+
+
+/* margins */
+
+.sokool-m-1 {
+    margin: 8px;
+}
+
+.sokool-m-2 {
+    margin: 10px;
+}
+
+.sokool-m-3 {
+    margin: 15px;
+}
+
+.sokool-m-4 {
+    margin: 20px;
+}
+
+.sokool-m-5 {
+    margin: 30px;
+}
+
+
+/* percentage width helper */
+
+.sokool-w-100 {
+    width: 100%;
+}
+
+.sokool-w-80 {
+    width: 80%;
+}
+
+.sokool-w-75 {
+    width: 75%;
+}
+
+.sokool-w-60 {
+    width: 60%;
+}
+
+.sokool-w-50 {
+    width: 50%;
+}
+
+.sokool-w-30 {
+    width: 30%;
+}
+
+.sokool-w-25 {
+    width: 25%;
+}
+
+.sokool-w-10 {
+    width: 10%;
+}
+
+
+/* percentage height helper */
+
+.sokool-h-100 {
+    height: 100%;
+}
+
+.sokool-h-80 {
+    height: 80%;
+}
+
+.sokool-h-75 {
+    height: 75%;
+}
+
+.sokool-h-50 {
+    height: 50%;
+}
+
+.sokool-h-25 {
+    height: 25%;
+}
+
+.sokool-h-10 {
+    height: 10%;
+}
+
+
+/* positoning  */
+
+.sokool-position-relative {
+    position: relative;
+}
+
+.sokool-position-absolute {
+    position: absolute;
+}
+
+
+/* flex box helper classes */
+
+.sokool-display-flex {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.sokool-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sokool-flex-center-hor {
+    display: flex;
+    justify-content: center;
+}
+
+.sokool-flex-center-vert {
+    display: flex;
+    align-items: center;
+}
+
+.sokool-flex-nowrap {
+    display: flex;
+    flex-wrap: nowrap
+}
+
+.sokool-flex-wrap {
+    display: flex;
+    flex-wrap: wrap
+}
+
+.sokool-flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.sokool-flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.sokool-flex-space-around {
+    display: flex;
+    justify-content: space-around;
+}
+
+.sokool-flex-space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/*  pointer */
+
+.sokool-pointer {
+    cursor: pointer;
+}
+
+
+/*  no padding no margin */
+
+.sokool-clean {
+    padding: 0;
+    margin: 0;
+}
+
+
+/* center element vertically */
+
+.sokool-center-verticle {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+/* center element vertically */
+
+.sokool-center-horizontal {
+    background: #7c3706;
+    position: relative;
+    margin: 0 auto;
+}
+
+
+/* center element in a parent */
+
+.sokool-center-in-parent {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 auto;
+}
+
+
+/* fit element in a parent */
+
+.sokool-fit-parent {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.sokool-text-center {
+    text-align: center;
+}
+
+.sokool-border-box {
+    box-sizing: border-box;
+}
