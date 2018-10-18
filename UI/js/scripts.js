@@ -162,11 +162,32 @@ try {
     document.getElementById('login_now').onclick = function(e) {
         e.preventDefault();
         selection = document.getElementById("select").value;
-        if (selection == "admin") {
-            window.location.href = "admin.html";
-        } else {
-            window.location.href = "orders.html";
-        }
+        formElements = document.getElementById("login-form");
+        var email = formElements.getElementsByTagName('input')[0].value;
+        var password = formElements.getElementsByTagName('input')[1].value;
+        endpoint = 'auth/login';
+        data = {
+            "email": email,
+            "password": password
+        };
+        postdata(endpoint, data).then(res => res.json())
+            .then(res => {
+                if (res.access_token != undefined) {
+                    storeToken(res.access_token);
+                    if (res.message.includes(" has been authorised.")) {
+                        if (selection == "admin") {
+                            window.location.href = "admin.html";
+                        } else {
+                            window.location.href = "orders.html";
+                        }
+                    }
+                }
+                document.getElementById('login_message').innerHTML = res.message;
+                console.log(res);
+
+
+            });
+
 
     };
 } catch (err) {}
