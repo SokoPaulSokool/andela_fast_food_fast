@@ -1,5 +1,4 @@
 var token = getToken();
-console.log(token);
 fetchCustomerMenu();
 
 
@@ -10,7 +9,7 @@ if (token == undefined) {
 }
 
 function fetchCustomerMenu() {
-
+    // gets all items on the menu
     getdata('menu', token).then(res => res.json()).then(res => {
         var ii = '';
         res.forEach((element, key) => {
