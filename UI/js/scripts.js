@@ -23,7 +23,7 @@ try {
             "password": password,
             "user_name": user_name
         };
-        postdata(endpoint, data).then(res => res.json())
+        postdata(endpoint, data, '').then(res => res.json())
             .then(res => {
                 if (res.message == undefined) {
                     if (res.user_name == user_name) {
@@ -170,7 +170,7 @@ try {
             "email": email,
             "password": password
         };
-        postdata(endpoint, data).then(res => res.json())
+        postdata(endpoint, data, '').then(res => res.json())
             .then(res => {
                 if (res.access_token != undefined) {
                     storeToken(res.access_token);
@@ -259,40 +259,46 @@ function replaceOrAddNewClass(element, oldClass, newClass) {
 
 baseUrl = 'http://localhost:5000/api/v1/';
 
-function postdata(endpoint, data) {
+function postdata(endpoint, data, token) {
     return fetch(baseUrl + endpoint, {
         method: 'post',
         headers: {
             'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
         },
         body: JSON.stringify(data)
     });
 }
 
-function getdata(endpoint) {
+function getdata(endpoint, token) {
     return fetch(baseUrl + endpoint, {
+        headers: {
+            'Authorization': 'Bearer ' + token
+        },
         method: 'get',
     });
 }
 
-function putdata(endpoint, data) {
+function putdata(endpoint, data, token) {
     return fetch(baseUrl + endpoint, {
         method: 'put',
         headers: {
             'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
         },
         body: JSON.stringify(data)
     });
 }
 
-function deletedata(endpoint, data) {
+function deletedata(endpoint, data, token) {
     return fetch(baseUrl + endpoint, {
         method: 'delete',
         headers: {
             'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
         },
         body: JSON.stringify(data)
     });

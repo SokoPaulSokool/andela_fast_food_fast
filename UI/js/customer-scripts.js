@@ -1,9 +1,5 @@
-function removeToken() {
-    localStorage.removeItem("token");
-}
-// removeToken();
 var token = getToken();
-fetchMenu();
+fetchCustomerMenu();
 
 
 if (token == undefined) {
@@ -12,8 +8,8 @@ if (token == undefined) {
 
 }
 
-function fetchMenu() {
-    // gets all items on the menu 
+function fetchCustomerMenu() {
+    // gets all items on the menu
     getdata('menu', token).then(res => res.json()).then(res => {
         var ii = '';
         res.forEach((element, key) => {
@@ -25,7 +21,7 @@ function fetchMenu() {
             <input class="sokool-secondary-background  order-button" type="image" src="./img/add_shopping_cart.png" alt="close">
         </div>`;
         });
-        document.getElementById('menu-items').innerHTML = ii;
+        document.getElementById('fast-orders').innerHTML = ii;
 
     });
 
