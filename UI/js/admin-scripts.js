@@ -22,7 +22,7 @@ function fetchMenu() {
             <div class="order-image order-${key}"></div>
             <div class="order-decription">${element.item_description}</div>
             <div class="order-price">${element.item_price}</div>
-            <input class="sokool-secondary-background  order-button" type="image" src="./img/add_shopping_cart.png" alt="close">
+            <input class="sokool-secondary-background  order-button" type="image" src="./img/close.png" alt="close">
         </div>`;
         });
         document.getElementById('menu-items').innerHTML = ii;
@@ -30,3 +30,49 @@ function fetchMenu() {
     });
 
 }
+try {
+    document.getElementById('edit-final').onclick = function(e) {
+        e.preventDefault();
+        // close add quantity dialog
+
+    };
+} catch (err) {}
+try {
+    document.getElementById('add_order').onclick = function(e) {
+        e.preventDefault();
+        // close add quantity dialog
+        var element = document.getElementById("edit-dialog-view");
+        element.classList.toggle("show");
+        element.classList.toggle("hide");
+    };
+} catch (err) {}
+
+try {
+    document.getElementById('edit-final').addEventListener('click', function(e) {
+        // adds item to menu
+        e.preventDefault();
+        formElements = document.getElementById("add-menu-form");
+        var name = formElements.getElementsByTagName('input')[0].value;
+        var description = formElements.getElementsByTagName('input')[1].value;
+        var price = formElements.getElementsByTagName('input')[2].value;
+
+        endpoint = 'menu';
+        data = {
+            "item_description": description,
+            "item_name": name,
+            "item_price": parseInt(price)
+        };
+        postdata(endpoint, data, token).then(res => res.json())
+            .then(res => {
+                if (res.item_name == name) {
+                    fetchMenu();
+                    var element = document.getElementById("edit-dialog-view");
+                    element.classList.toggle("show");
+                    element.classList.toggle("hide");
+                }
+                console.log(res);
+
+            });
+
+    });
+} catch (err) {}

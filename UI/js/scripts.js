@@ -18,7 +18,7 @@ try {
 
         endpoint = 'auth/signup';
         data = {
-            "account_type": "customer",
+            "account_type": "admin",
             "email": email,
             "password": password,
             "user_name": user_name
@@ -140,24 +140,7 @@ try {
         element.classList.toggle("hide");
     };
 } catch (err) {}
-try {
-    document.getElementById('edit-final').onclick = function(e) {
-        e.preventDefault();
-        // close add quantity dialog
-        var element = document.getElementById("edit-dialog-view");
-        element.classList.toggle("show");
-        element.classList.toggle("hide");
-    };
-} catch (err) {}
-try {
-    document.getElementById('add_order').onclick = function(e) {
-        e.preventDefault();
-        // close add quantity dialog
-        var element = document.getElementById("edit-dialog-view");
-        element.classList.toggle("show");
-        element.classList.toggle("hide");
-    };
-} catch (err) {}
+
 try {
     document.getElementById('login_now').onclick = function(e) {
         e.preventDefault();
@@ -175,7 +158,7 @@ try {
                 if (res.access_token != undefined) {
                     storeToken(res.access_token);
                     if (res.message.includes(" has been authorised.")) {
-                        if (selection == "admin") {
+                        if (res.account_type == "admin") {
                             window.location.href = "admin.html";
                         } else {
                             window.location.href = "orders.html";

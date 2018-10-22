@@ -51,7 +51,8 @@ class User:
                     " has been authorised."
                 return jsonify({
                     "message": message,
-                    'access_token': access_token
+                    'access_token': access_token,
+                    "account_type": check_result[4]
                 }), 200
             else:
                 return MessageResponse.send(
