@@ -66,6 +66,7 @@ try {
         postdata(endpoint, data, token).then(res => res.json())
             .then(res => {
                 console.log(res);
+                get_user_order_history();
                 var element = document.getElementById("dialog-view");
                 element.classList.toggle("show");
                 element.classList.toggle("hide");
@@ -75,3 +76,27 @@ try {
 
     });
 } catch (err) {}
+get_user_order_history();
+
+function get_user_order_history() {
+    endpoint = 'users/orders';
+
+    getdata(endpoint, token).then(res => res.json())
+        .then(res => {
+            console.log(res);
+            var ii = '';
+            res.forEach((element, key) => {
+                ii += `<div class="order-item shadow">
+                <div class="order-tittle">${element.item_name}</div>
+                <div class="order-image order-9"></div>
+                <div class="order-decription">${element.item_description}</div>
+                <div class="order-price">${element.item_price} UGX</div>
+                <div class="order-decription">${element.created_at}</div>
+                <div class="order-price">${element.order_status}</div>
+               <!-- <input class="sokool-secondary-background  order-button" type="image" src="./img/remove_circle_outline.png" alt="close"> -->
+            </div>`;
+            });
+            document.getElementById('user-orders-list').innerHTML = ii;
+        });
+
+}
