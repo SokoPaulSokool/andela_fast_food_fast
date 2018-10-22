@@ -22,12 +22,28 @@ function fetchMenu() {
             <div class="order-image order-${key}"></div>
             <div class="order-decription">${element.item_description}</div>
             <div class="order-price">${element.item_price}</div>
-            <input class="sokool-secondary-background  order-button" type="image" src="./img/close.png" alt="close">
+            <input onclick="delete_item(${element.item_id})" class="sokool-secondary-background  order-button" type="image" src="./img/close.png" alt="close">
         </div>`;
         });
         document.getElementById('menu-items').innerHTML = ii;
 
     });
+
+}
+
+function delete_item(id) {
+    endpoint = 'menu/' + parseInt(id);
+    data = {};
+
+    deletedata(endpoint, data, token).then(res => {
+            if (res.status == 200) {
+                fetchMenu();
+            }
+
+        })
+        .then(res => {
+
+        });
 
 }
 try {
@@ -69,6 +85,9 @@ try {
                     var element = document.getElementById("edit-dialog-view");
                     element.classList.toggle("show");
                     element.classList.toggle("hide");
+                } else {
+
+                    document.getElementById('add_item_message').innerHTML = res.message;
                 }
                 console.log(res);
 
