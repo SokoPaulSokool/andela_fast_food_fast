@@ -18,7 +18,7 @@ try {
 
         endpoint = 'auth/signup';
         data = {
-            "account_type": "admin",
+            "account_type": "customer",
             "email": email,
             "password": password,
             "user_name": user_name
@@ -103,19 +103,7 @@ try {
     });
 } catch (err) {}
 
-try {
-    document.getElementById('fast-orders').addEventListener('click', function(e) {
-        // open add quantity dialog
 
-        console.log("l");
-        if (e.target && isInArray(e.target.classList, "order-button")) {
-
-            var element = document.getElementById("dialog-view");
-            element.classList.toggle("show");
-            element.classList.toggle("hide");
-        }
-    });
-} catch (err) {}
 try {
     document.getElementById('menu-items').addEventListener('click', function(e) {
         // open add quantity dialog
@@ -131,15 +119,6 @@ try {
     });
 } catch (err) {}
 
-try {
-    document.getElementById('add-final').onclick = function(e) {
-        // close add quantity dialog
-        e.preventDefault();
-        var element = document.getElementById("dialog-view");
-        element.classList.toggle("show");
-        element.classList.toggle("hide");
-    };
-} catch (err) {}
 
 try {
     document.getElementById('login_now').onclick = function(e) {
