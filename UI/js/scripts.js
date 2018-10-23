@@ -138,6 +138,7 @@ try {
                 return res.json();
             })
             .then(res => {
+
                 if (res.access_token != undefined) {
                     storeToken(res.access_token);
                     if (res.message.includes(" has been authorised.")) {
