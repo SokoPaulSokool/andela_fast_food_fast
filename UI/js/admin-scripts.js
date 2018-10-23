@@ -30,6 +30,71 @@ function fetchMenu() {
     });
 
 }
+fetchAllOrders();
+
+function fetchAllOrders() {
+    // gets all items on the menu 
+    getdata('orders', token).then(res => res.json()).then(res => {
+        console.log(res);
+        nn = `created_at: "2018-10-23 09:18:31.742124"
+        delivery_location: "kampala"
+        edited_at: "2018-10-23 09:18:31.742124"
+        item_description: "kool chicken fried to satisify you"
+        item_id: 4
+        item_name: "chicken"
+        item_price: "40000"
+        order_id: 1
+        order_status: "incomplete"
+        user_email: "sopapaso73@gmail.com"
+        user_id: 1
+        user_name: "so"`;
+
+        var ii = '';
+        res.forEach((element, key) => {
+            if (element.order_status == 'incomplete') {
+                ii += `<div class="order-item shadow">
+                <div class="order-tittle">${element.item_name}</div>
+                <div class="order-image order-4"></div>
+                <div class="order-decription">${element.item_description}</div>
+                <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
+                    <h3 class="text4">Ordered by</h3>
+                    <h3 class="text3">${element.user_name}</h3>
+                </div>
+                <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
+                    <h3 class="text4">At</h3>
+                    <h3 class="text3">${element.created_at}</h3>
+                </div>
+                <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
+                    <h3 class="text4">Quantity</h3>
+                    <h3 class="text3">1</h3>
+                </div>
+                <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
+                    <h3 class="text4">Price</h3>
+                    <h3 class="text3">${element.item_price} UGX</h3>
+                </div>
+                <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
+                <h3 class="text4">Location</h3>
+                <h3 class="text3">${element.delivery_location}</h3>
+            </div>
+                <div class="sokool-flex-row sokool-flex-space-around">
+                    <div class="sokool-p-1 sokool-flex-row sokool-flex-center-vert accept">
+                        <input class="sokool-secondary-background button-small order-button sokool-m-1" type="image" src="./img/done.png" alt="accept">
+                        <p>Accept</p>
+                    </div>
+                    <div class="sokool-p-1 sokool-flex-row sokool-flex-center-vert decline">
+                        <input class="sokool-grey-background button-small order-button sokool-m-1" type="image" src="./img/close.png" alt="accept">
+                        <p>Decline</p>
+                    </div>
+                </div>
+            </div>`;
+            }
+        });
+        document.getElementById('fast-orders').innerHTML = ii;
+
+    });
+
+}
+
 
 function delete_item(id) {
     endpoint = 'menu/' + parseInt(id);
