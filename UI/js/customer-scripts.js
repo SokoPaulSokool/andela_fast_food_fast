@@ -4,9 +4,13 @@ var selected = {};
 
 
 if (token == undefined) {
-    window.location.href = "index.html";
+    back_home();
 } else {
 
+}
+
+function back_home() {
+    window.location.href = "index.html";
 }
 
 function select(item) {
@@ -18,17 +22,27 @@ function fetchCustomerMenu() {
     // gets all items on the menu
     getdata('menu', token).then(res => res.json()).then(res => {
         var ii = '';
-        res.forEach((element, key) => {
-            ii += `  <div class="order-item shadow">
+        if (res.msg == 'Token has expired') {
+            back_home();
+        } else {
+            res.reverse().forEach((element, key) => {
+                ii += `  <div class="order-item shadow">
             <div class="order-tittle">${element.item_name}</div>
             <div class="order-image order-${key}"></div>
             <div class="order-decription">${element.item_description}</div>
             <div class="order-price">${element.item_price}</div>
             <input onclick="${select(element)}" class="sokool-secondary-background  order-button" type="image" src="./img/add_shopping_cart.png" alt="close">
         </div>`;
-        });
-        document.getElementById('fast-orders').innerHTML = ii;
+            });
 
+            if (ii == "") {
+                document.getElementById('fast-orders').innerHTML = ` <div class="order-item ">
+                <div class="order-tittle">No Items on menu</div></div>`;
+            } else {
+
+                document.getElementById('fast-orders').innerHTML = ii;
+            }
+        }
     });
 
 }
@@ -47,6 +61,7 @@ try {
 
             element.classList.toggle("show");
             element.classList.toggle("hide");
+            document.getElementById('place_order_message').innerHTML = "";
         }
     });
 } catch (err) {}
@@ -65,11 +80,15 @@ try {
         };
         postdata(endpoint, data, token).then(res => res.json())
             .then(res => {
+                if (res.message.delivery_location == location) {
+                    var element = document.getElementById("dialog-view");
+                    element.classList.toggle("show");
+                    element.classList.toggle("hide");
+                } else {
+                    document.getElementById('place_order_message').innerHTML = res.message;
+                }
                 console.log(res);
                 get_user_order_history();
-                var element = document.getElementById("dialog-view");
-                element.classList.toggle("show");
-                element.classList.toggle("hide");
 
 
             });
@@ -83,10 +102,12 @@ function get_user_order_history() {
 
     getdata(endpoint, token).then(res => res.json())
         .then(res => {
-            console.log(res);
-            var ii = '';
-            res.forEach((element, key) => {
-                ii += `<div class="order-item shadow">
+            if (res.msg == 'Token has expired') {
+                back_home();
+            } else {
+                var ii = '';
+                res.reverse().forEach((element, key) => {
+                    ii += `<div class="order-item shadow">
                 <div class="order-tittle">${element.item_name}</div>
                 <div class="order-image order-9"></div>
                 <div class="order-decription">${element.item_description}</div>
@@ -95,8 +116,16 @@ function get_user_order_history() {
                 <div class="order-price">${element.order_status}</div>
                <!-- <input class="sokool-secondary-background  order-button" type="image" src="./img/remove_circle_outline.png" alt="close"> -->
             </div>`;
-            });
-            document.getElementById('user-orders-list').innerHTML = ii;
+                });
+
+                if (ii == "") {
+                    document.getElementById('user-orders-list').innerHTML = ` <div class="order-item ">
+                    <div class="order-tittle">No Orders made</div></div>`;
+                } else {
+
+                    document.getElementById('user-orders-list').innerHTML = ii;
+                }
+            }
         });
 
 }
