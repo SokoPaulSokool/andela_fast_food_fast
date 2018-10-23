@@ -25,8 +25,8 @@ class OrderItem:
         self.user_id = user_id
         self.item_id = item_id
         self.delivery_location = delivery_location
-        self.created_at = datetime.datetime.now()
-        self.edited_at = datetime.datetime.now()
+        self.created_at = datetime.datetime.now().strftime("%Y-%m-%d  %H:%M %p")
+        self.edited_at = datetime.datetime.now().strftime("%Y-%m-%d  %H:%M %p")
         self.order_status = "incomplete"
 
     def toJSON(self):
