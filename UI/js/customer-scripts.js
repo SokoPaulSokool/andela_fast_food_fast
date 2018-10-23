@@ -20,30 +20,33 @@ function select(item) {
 
 function fetchCustomerMenu() {
     // gets all items on the menu
-    getdata('menu', token).then(res => res.json()).then(res => {
-        var ii = '';
-        if (res.msg == 'Token has expired') {
-            back_home();
-        } else {
-            res.reverse().forEach((element, key) => {
-                ii += `  <div class="order-item shadow">
+    getdata('menu', token).then(res => {
+            return res.json();
+        })
+        .then(res => {
+            var ii = '';
+            if (res.msg == 'Token has expired') {
+                back_home();
+            } else {
+                res.reverse().forEach((element, key) => {
+                    ii += `  <div class="order-item shadow">
             <div class="order-tittle">${element.item_name}</div>
             <div class="order-image order-${key}"></div>
             <div class="order-decription">${element.item_description}</div>
             <div class="order-price">${element.item_price}</div>
             <input onclick="${select(element)}" class="sokool-secondary-background  order-button" type="image" src="./img/add_shopping_cart.png" alt="close">
         </div>`;
-            });
+                });
 
-            if (ii == "") {
-                document.getElementById('fast-orders').innerHTML = ` <div class="order-item ">
+                if (ii == "") {
+                    document.getElementById('fast-orders').innerHTML = ` <div class="order-item ">
                 <div class="order-tittle">No Items on menu</div></div>`;
-            } else {
+                } else {
 
-                document.getElementById('fast-orders').innerHTML = ii;
+                    document.getElementById('fast-orders').innerHTML = ii;
+                }
             }
-        }
-    });
+        });
 
 }
 
@@ -78,7 +81,9 @@ try {
             "delivery_location": location,
             "item_id": parseInt(selected.item_id)
         };
-        postdata(endpoint, data, token).then(res => res.json())
+        postdata(endpoint, data, token).then(res => {
+                return res.json();
+            })
             .then(res => {
                 if (res.message.delivery_location == location) {
                     var element = document.getElementById("dialog-view");
@@ -100,7 +105,9 @@ get_user_order_history();
 function get_user_order_history() {
     endpoint = 'users/orders';
 
-    getdata(endpoint, token).then(res => res.json())
+    getdata(endpoint, token).then(res => {
+            return res.json();
+        })
         .then(res => {
             if (res.msg == 'Token has expired') {
                 back_home();

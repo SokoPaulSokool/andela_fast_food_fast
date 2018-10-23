@@ -18,7 +18,9 @@ function back_home() {
 
 function fetchMenu() {
     // gets all items on the menu 
-    getdata('menu', token).then(res => res.json()).then(res => {
+    getdata('menu', token).then(res => {
+        return res.json();
+    }).then(res => {
         var ii = '';
         if (res.msg == 'Token has expired') {
             back_home();
@@ -50,17 +52,20 @@ fetchAllOrders();
 
 function fetchAllOrders() {
     // gets all items on the menu 
-    getdata('orders', token).then(res => res.json()).then(res => {
+    getdata('orders', token).then(res => {
+            return res.json();
+        })
+        .then(res => {
 
-        var incomplete = '';
-        var pending = '';
-        if (res.msg == 'Token has expired') {
-            back_home();
-        } else {
+            var incomplete = '';
+            var pending = '';
+            if (res.msg == 'Token has expired') {
+                back_home();
+            } else {
 
-            res.reverse().forEach((element, key) => {
-                if (element.order_status == 'incomplete') {
-                    incomplete += `<div class="order-item shadow">
+                res.reverse().forEach((element, key) => {
+                    if (element.order_status == 'incomplete') {
+                        incomplete += `<div class="order-item shadow">
                 <div class="order-tittle">${element.item_name}</div>
                 <div class="order-image order-4"></div>
                 <div class="order-decription">${element.item_description}</div>
@@ -95,10 +100,10 @@ function fetchAllOrders() {
                     </div>
                 </div>
             </div>`;
-                }
+                    }
 
-                if (element.order_status == 'pending') {
-                    pending += `<div class="order-item shadow">
+                    if (element.order_status == 'pending') {
+                        pending += `<div class="order-item shadow">
                 <div class="order-tittle">${element.item_name}</div>
                 <div class="order-image order-4"></div>
                 <div class="order-decription">${element.item_description}</div>
@@ -129,28 +134,28 @@ function fetchAllOrders() {
             </div>
         </div>
             </div>`;
-                }
-            });
+                    }
+                });
 
-            if (incomplete == "") {
-                document.getElementById('fast-orders').innerHTML = ` <div class="order-item ">
+                if (incomplete == "") {
+                    document.getElementById('fast-orders').innerHTML = ` <div class="order-item ">
                 <div class="order-tittle">No Orders made</div></div>`;
-            } else {
+                } else {
 
-                document.getElementById('fast-orders').innerHTML = incomplete;
-            }
+                    document.getElementById('fast-orders').innerHTML = incomplete;
+                }
 
-            if (pending == "") {
-                document.getElementById('pending-list').innerHTML = ` <div class="order-item ">
+                if (pending == "") {
+                    document.getElementById('pending-list').innerHTML = ` <div class="order-item ">
                 <div class="order-tittle">No pending orders</div></div>`;
-            } else {
+                } else {
 
-                document.getElementById('pending-list').innerHTML = pending;
+                    document.getElementById('pending-list').innerHTML = pending;
+                }
+
             }
 
-        }
-
-    });
+        });
 
 }
 
@@ -161,7 +166,9 @@ function change_status(id, status) {
         "order_status": status
     };
 
-    putdata(endpoint, data, token).then(res => res.json())
+    putdata(endpoint, data, token).then(res => {
+            return res.json();
+        })
         .then(res => {
             console.log(res);
 
@@ -217,7 +224,9 @@ try {
             "item_name": name,
             "item_price": parseInt(price)
         };
-        postdata(endpoint, data, token).then(res => res.json())
+        postdata(endpoint, data, token).then(res => {
+                return res.json();
+            })
             .then(res => {
                 if (res.item_name == name) {
                     fetchMenu();

@@ -23,7 +23,9 @@ try {
             "password": password,
             "user_name": user_name
         };
-        postdata(endpoint, data, '').then(res => res.json())
+        postdata(endpoint, data, '').then(res => {
+                return res.json();
+            })
             .then(res => {
                 if (res.message == undefined) {
                     if (res.user_name == user_name) {
@@ -133,8 +135,6 @@ try {
             "password": password
         };
         postdata(endpoint, data, '').then(res => {
-                console.log(res);
-
                 return res.json();
             })
             .then(res => {
