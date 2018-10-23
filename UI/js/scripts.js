@@ -124,6 +124,7 @@ try {
     document.getElementById('login_now').onclick = function(e) {
         e.preventDefault();
         formElements = document.getElementById("login-form");
+
         var email = formElements.getElementsByTagName('input')[0].value;
         var password = formElements.getElementsByTagName('input')[1].value;
         endpoint = 'auth/login';
@@ -217,7 +218,7 @@ function replaceOrAddNewClass(element, oldClass, newClass) {
 }
 
 // baseUrl = 'http://localhost:5000/api/v1/';
-baseUrl = 'https://andela-fast-food-fast.herokuapp.com/';
+baseUrl = 'https://andela-fast-food-fast.herokuapp.com/api/v1/';
 
 function postdata(endpoint, data, token) {
     return fetch(baseUrl + endpoint, {
