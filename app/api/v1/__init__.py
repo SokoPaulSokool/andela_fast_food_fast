@@ -6,14 +6,16 @@ from app.api.v1.endpoint_update_order_status import api_update_order_status
 from app.api.v1.endpoint_delete_order import api_delete_order
 from app.api.v1.endpoint_get_menu import api_get_menu, api_add_menu
 from app.api.v1.endpoint_authentication import api_signup, api_login
-from app.api.v1.default import api_default
+from app.api.v1.default import api_default, api_static_css, api_static_img, api_static_js, api_static_html
 from app.api.v1.endpoint_delete_menu import api_delete_menu
 import os
 from flask_jwt_extended import JWTManager
 from flasgger import Swagger
 from flask_cors import CORS
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static/',
+            static_folder='../../../UI/static',
+            template_folder='../../../UI',)
 CORS(app)
 
 Swagger(app)
@@ -33,6 +35,10 @@ app.register_blueprint(api_login)
 app.register_blueprint(api_get_all_users_orders)
 app.register_blueprint(api_default)
 app.register_blueprint(api_delete_menu)
+app.register_blueprint(api_static_css)
+app.register_blueprint(api_static_js)
+app.register_blueprint(api_static_img)
+app.register_blueprint(api_static_html)
 
 app.config['SECRET_KEY'] = os.environ.get(
     'SECRET_KEY', 'sokool-1234567')
