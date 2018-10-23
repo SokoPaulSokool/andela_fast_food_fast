@@ -123,7 +123,6 @@ try {
 try {
     document.getElementById('login_now').onclick = function(e) {
         e.preventDefault();
-        selection = document.getElementById("select").value;
         formElements = document.getElementById("login-form");
         var email = formElements.getElementsByTagName('input')[0].value;
         var password = formElements.getElementsByTagName('input')[1].value;
@@ -145,8 +144,6 @@ try {
                     }
                 }
                 document.getElementById('login_message').innerHTML = res.message;
-                console.log(res);
-
 
             });
 
@@ -219,7 +216,8 @@ function replaceOrAddNewClass(element, oldClass, newClass) {
     }
 }
 
-baseUrl = 'http://localhost:5000/api/v1/';
+// baseUrl = 'http://localhost:5000/api/v1/';
+baseUrl = 'https://andela-fast-food-fast.herokuapp.com/';
 
 function postdata(endpoint, data, token) {
     return fetch(baseUrl + endpoint, {
@@ -274,11 +272,8 @@ function storeToken(token) {
         // Store
         localStorage.setItem("token", token);
         return true;
-        // Retrieve
-        // document.getElementById("result").innerHTML = localStorage.getItem("lastname");
     } else {
         return false;
-        // document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
     }
 }
 
