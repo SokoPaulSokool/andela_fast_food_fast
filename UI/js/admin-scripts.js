@@ -32,7 +32,15 @@ function fetchMenu() {
             <input onclick="delete_item(${element.item_id})" class="sokool-secondary-background  order-button" type="image" src="./img/close.png" alt="close">
         </div>`;
             });
-            document.getElementById('menu-items').innerHTML = ii;
+
+
+            if (ii == "") {
+                document.getElementById('menu-items').innerHTML = ` <div class="order-item ">
+                <div class="order-tittle">No Items On Menu</div></div>`;
+            } else {
+
+                document.getElementById('menu-items').innerHTML = ii;
+            }
         }
 
     });
@@ -123,8 +131,23 @@ function fetchAllOrders() {
             </div>`;
                 }
             });
-            document.getElementById('fast-orders').innerHTML = incomplete;
-            document.getElementById('pending-list').innerHTML = pending;
+
+            if (incomplete == "") {
+                document.getElementById('fast-orders').innerHTML = ` <div class="order-item ">
+                <div class="order-tittle">No Orders made</div></div>`;
+            } else {
+
+                document.getElementById('fast-orders').innerHTML = incomplete;
+            }
+
+            if (pending == "") {
+                document.getElementById('pending-list').innerHTML = ` <div class="order-item ">
+                <div class="order-tittle">No pending orders</div></div>`;
+            } else {
+
+                document.getElementById('pending-list').innerHTML = pending;
+            }
+
         }
 
     });

@@ -34,7 +34,14 @@ function fetchCustomerMenu() {
             <input onclick="${select(element)}" class="sokool-secondary-background  order-button" type="image" src="./img/add_shopping_cart.png" alt="close">
         </div>`;
             });
-            document.getElementById('fast-orders').innerHTML = ii;
+
+            if (ii == "") {
+                document.getElementById('fast-orders').innerHTML = ` <div class="order-item ">
+                <div class="order-tittle">No Items on menu</div></div>`;
+            } else {
+
+                document.getElementById('fast-orders').innerHTML = ii;
+            }
         }
     });
 
@@ -110,7 +117,14 @@ function get_user_order_history() {
                <!-- <input class="sokool-secondary-background  order-button" type="image" src="./img/remove_circle_outline.png" alt="close"> -->
             </div>`;
                 });
-                document.getElementById('user-orders-list').innerHTML = ii;
+
+                if (ii == "") {
+                    document.getElementById('user-orders-list').innerHTML = ` <div class="order-item ">
+                    <div class="order-tittle">No Orders made</div></div>`;
+                } else {
+
+                    document.getElementById('user-orders-list').innerHTML = ii;
+                }
             }
         });
 
