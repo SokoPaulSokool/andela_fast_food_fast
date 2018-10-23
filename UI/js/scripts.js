@@ -132,7 +132,11 @@ try {
             "email": email,
             "password": password
         };
-        postdata(endpoint, data, '').then(res => res.json())
+        postdata(endpoint, data, '').then(res => {
+                console.log(res);
+
+                return res.json();
+            })
             .then(res => {
                 if (res.access_token != undefined) {
                     storeToken(res.access_token);
