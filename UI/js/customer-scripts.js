@@ -1,13 +1,18 @@
 var token = getToken();
 
 fetchCustomerMenu();
-
+get_user_order_history();
+check_auth();
 var selected = {};
 
-if (token == undefined) {
-    back_home();
-} else {
 
+function check_auth() {
+    token = getToken();
+    if (token == undefined) {
+        back_home();
+    } else {
+
+    }
 }
 
 function back_home() {
@@ -23,6 +28,7 @@ function select(item) {
 
 function fetchCustomerMenu() {
     // gets all items on the menu
+    check_auth();
     getdata('menu', token).then(res => {
             return res.json();
         })
@@ -104,10 +110,10 @@ try {
 } catch (err) {}
 
 
-get_user_order_history();
 
 function get_user_order_history() {
     // Gets users order history
+    check_auth();
     endpoint = 'users/orders';
 
     getdata(endpoint, token).then(res => {
@@ -140,3 +146,22 @@ function get_user_order_history() {
             }
         });
 }
+
+
+try {
+    document.getElementById('show_all_orders').addEventListener('click', function() {
+        // switch to customers list
+        fetchCustomerMenu();
+        get_user_order_history();
+    });
+} catch (err) {}
+
+
+
+try {
+    document.getElementById('show_my_orders').addEventListener('click', function() {
+        // switch to cusomers list
+        fetchCustomerMenu();
+        get_user_order_history();
+    });
+} catch (err) {}

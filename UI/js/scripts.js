@@ -59,6 +59,15 @@ try {
 } catch (err) {}
 
 
+try {
+    document.getElementById('log_out').addEventListener('click', function(e) {
+        e.preventDefault();
+        localStorage.removeItem("token");
+        window.location.href = "index.html";
+    });
+} catch (err) {}
+
+
 
 try {
     document.getElementById('close').addEventListener('click', function() {
