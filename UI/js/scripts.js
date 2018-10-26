@@ -1,3 +1,6 @@
+// baseUrl = 'http://localhost:5000/api/v1/';
+baseUrl = 'https://andela-fast-food-fast.herokuapp.com/api/v1/';
+
 try {
     document.getElementById('login_button').addEventListener('click', function() {
         openForms();
@@ -5,6 +8,9 @@ try {
         document.getElementById("login-form").style.display = "block";
     });
 } catch (err) {}
+
+
+
 try {
     document.getElementById('submit_button').addEventListener('click', function(e) {
         // create account
@@ -14,7 +20,6 @@ try {
         var user_name = formElements.getElementsByTagName('input')[0].value;
         var email = formElements.getElementsByTagName('input')[1].value;
         var password = formElements.getElementsByTagName('input')[2].value;
-        console.log(user_name);
 
         endpoint = 'auth/signup';
         data = {
@@ -23,6 +28,7 @@ try {
             "password": password,
             "user_name": user_name
         };
+
         postdata(endpoint, data, '').then(res => {
                 return res.json();
             })
@@ -34,28 +40,32 @@ try {
                         document.getElementById("login-form").style.display = "block";
                     }
                 } else {
-
                     document.getElementById('signup_message').innerHTML = res.message;
                 }
             });
-
     });
 } catch (err) {}
+
+
+
 try {
     document.getElementById('sign_up_button').addEventListener('click', function(e) {
         e.preventDefault();
         openForms();
         document.getElementById("login-form").style.display = "none";
         document.getElementById("signup-form").style.display = "block";
-
     });
 } catch (err) {}
+
+
+
 try {
     document.getElementById('close').addEventListener('click', function() {
         closeForms();
     });
-
 } catch (err) {}
+
+
 
 try {
     document.getElementById('create_account').addEventListener('click', function() {
@@ -65,15 +75,17 @@ try {
     });
 } catch (err) {}
 
+
+
 try {
     document.getElementById('create_account_form').addEventListener('click', function() {
         // switch to signup form
         document.getElementById("login-form").style.display = "none";
         document.getElementById("signup-form").style.display = "block";
-
-
     });
 } catch (err) {}
+
+
 
 try {
     document.getElementById('show_menu').addEventListener('click', function() {
@@ -82,38 +94,38 @@ try {
         document.getElementById("menu_list").style.display = "flex";
     });
 } catch (err) {}
+
+
+
 try {
     document.getElementById('show_all_orders').addEventListener('click', function() {
         // switch to customers list
-
         try {
-
             document.getElementById("customers-list").style.display = "flex";
             document.getElementById("menu_list").style.display = "none";
         } catch (err) {}
     });
 } catch (err) {}
+
+
+
 try {
     document.getElementById('show_my_orders').addEventListener('click', function() {
         // switch to cusomers list
         try {
-
-
             document.getElementById("customers-list").style.display = "flex";
             document.getElementById("menu_list").style.display = "none";
         } catch (err) {}
     });
 } catch (err) {}
+
 
 
 try {
     document.getElementById('menu-items').addEventListener('click', function(e) {
         // open add quantity dialog
         e.preventDefault();
-
-
         if (e.target && isInArray(e.target.classList, "edit-button")) {
-
             var element2 = document.getElementById("edit-dialog-view");
             element2.classList.toggle("show");
             element2.classList.toggle("hide");
@@ -122,11 +134,11 @@ try {
 } catch (err) {}
 
 
+
 try {
     document.getElementById('login_now').onclick = function(e) {
         e.preventDefault();
         formElements = document.getElementById("login-form");
-
         var email = formElements.getElementsByTagName('input')[0].value;
         var password = formElements.getElementsByTagName('input')[1].value;
         endpoint = 'auth/login';
@@ -134,11 +146,11 @@ try {
             "email": email,
             "password": password
         };
+
         postdata(endpoint, data, '').then(res => {
                 return res.json();
             })
             .then(res => {
-
                 if (res.access_token != undefined) {
                     storeToken(res.access_token);
                     if (res.message.includes(" has been authorised.")) {
@@ -150,26 +162,30 @@ try {
                     }
                 }
                 document.getElementById('login_message').innerHTML = res.message;
-
             });
-
-
     };
 } catch (err) {}
+
+
+
 try {
     document.getElementById('title').onclick = function() {
         window.location.href = "index.html";
     };
 } catch (err) {}
 
+
+
 try {
     document.getElementById('show_my_orders').onclick = function() {
         // shows selected orders for customer or pending orders for admin  when my orders or  pending orders orders button is clicked
         replaceOrAddNewClass(document.getElementById("all-orders"), "show_my_orders", "hide_my_orders");
         replaceOrAddNewClass(document.getElementById("my_orders"), "hide_my_orders", "show_my_orders");
-
     };
 } catch (err) {}
+
+
+
 try {
     document.getElementById('show_all_orders').onclick = function() {
         // shows menu for customer or customer orders for admin  when menu or orders button is clicked
@@ -177,7 +193,6 @@ try {
         replaceOrAddNewClass(document.getElementById("my_orders"), "show_my_orders", "hide_my_orders");
     };
 } catch (err) {}
-
 
 
 
@@ -191,10 +206,14 @@ function openForms() {
     }
 }
 
+
+
 function closeForms() {
     // closes view for forms
     document.getElementById("all-forms").style.width = "0";
 }
+
+
 
 function isInArray(array, search) {
     var found = false;
@@ -206,6 +225,8 @@ function isInArray(array, search) {
     }
     return found;
 }
+
+
 
 function replaceOrAddNewClass(element, oldClass, newClass) {
     // replaces a oldClass with newClass if exists and adds newClass if oldClass does not exist
@@ -222,10 +243,10 @@ function replaceOrAddNewClass(element, oldClass, newClass) {
     }
 }
 
-// baseUrl = 'http://localhost:5000/api/v1/';
-baseUrl = 'https://andela-fast-food-fast.herokuapp.com/api/v1/';
+
 
 function postdata(endpoint, data, token) {
+    // Makes POST request and returns a promise
     return fetch(baseUrl + endpoint, {
         method: 'post',
         headers: {
@@ -239,8 +260,8 @@ function postdata(endpoint, data, token) {
 
 
 
-
 function getdata(endpoint, token) {
+    // Makes GET request and returns a promise
     return fetch(baseUrl + endpoint, {
         headers: {
             'Authorization': 'Bearer ' + token
@@ -249,7 +270,10 @@ function getdata(endpoint, token) {
     });
 }
 
+
+
 function putdata(endpoint, data, token) {
+    // Makes PUT request and returns a promise
     return fetch(baseUrl + endpoint, {
         method: 'put',
         headers: {
@@ -261,7 +285,10 @@ function putdata(endpoint, data, token) {
     });
 }
 
+
+
 function deletedata(endpoint, data, token) {
+    // Makes DELETE request and returns a promise
     return fetch(baseUrl + endpoint, {
         method: 'delete',
         headers: {
@@ -273,9 +300,11 @@ function deletedata(endpoint, data, token) {
     });
 }
 
+
+
 function storeToken(token) {
     if (typeof(Storage) !== "undefined") {
-        // Store
+        // Store token in local storage
         localStorage.setItem("token", token);
         return true;
     } else {
@@ -283,6 +312,9 @@ function storeToken(token) {
     }
 }
 
+
+
 function getToken() {
+    // Gets token in local storage
     return localStorage.getItem("token");
 }

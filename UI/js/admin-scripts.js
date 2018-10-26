@@ -27,15 +27,13 @@ function fetchMenu() {
         } else {
             res.reverse().forEach((element, key) => {
                 ii += `  <div class="order-item shadow">
-            <div class="order-tittle">${element.item_name}</div>
-            <div class="order-image order-${key}"></div>
-            <div class="order-decription">${element.item_description}</div>
-            <div class="order-price">${element.item_price}</div>
-            <input onclick="delete_item(${element.item_id})" class="sokool-secondary-background  order-button" type="image" src="./img/close.png" alt="close">
-        </div>`;
+                        <div class="order-tittle">${element.item_name}</div>
+                        <div class="order-image order-${key}"></div>
+                        <div class="order-decription">${element.item_description}</div>
+                        <div class="order-price">${element.item_price}</div>
+                        <input onclick="delete_item(${element.item_id})" class="sokool-secondary-background  order-button" type="image" src="./img/close.png" alt="close">
+                    </div>`;
             });
-
-
             if (ii == "") {
                 document.getElementById('menu-items').innerHTML = ` <div class="order-item ">
                 <div class="order-tittle">No Items On Menu</div></div>`;
@@ -48,6 +46,8 @@ function fetchMenu() {
     });
 
 }
+
+
 fetchAllOrders();
 
 function fetchAllOrders() {
@@ -56,84 +56,82 @@ function fetchAllOrders() {
             return res.json();
         })
         .then(res => {
-
             var incomplete = '';
             var pending = '';
             if (res.msg == 'Token has expired') {
                 back_home();
             } else {
-
                 res.reverse().forEach((element, key) => {
                     if (element.order_status == 'incomplete') {
                         incomplete += `<div class="order-item shadow">
-                <div class="order-tittle">${element.item_name}</div>
-                <div class="order-image order-4"></div>
-                <div class="order-decription">${element.item_description}</div>
-                <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
-                    <h3 class="text4">Ordered by</h3>
-                    <h3 class="text3">${element.user_name}</h3>
-                </div>
-                <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
-                    <h3 class="text4">At</h3>
-                    <h3 class="text3">${element.created_at}</h3>
-                </div>
-                <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
-                    <h3 class="text4">Quantity</h3>
-                    <h3 class="text3">1</h3>
-                </div>
-                <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
-                    <h3 class="text4">Price</h3>
-                    <h3 class="text3">${element.item_price} UGX</h3>
-                </div>
-                <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
-                <h3 class="text4">Location</h3>
-                <h3 class="text3">${element.delivery_location}</h3>
-            </div>
-                <div class="sokool-flex-row sokool-flex-space-around">
-                    <div class="sokool-p-1 sokool-flex-row sokool-flex-center-vert accept">
-                        <input onclick="change_status(${element.order_id},'pending')"  class="sokool-secondary-background button-small order-button sokool-m-1" type="image" src="./img/done.png" alt="accept">
-                        <p>Accept</p>
-                    </div>
-                    <div class="sokool-p-1 sokool-flex-row sokool-flex-center-vert decline">
-                        <input onclick="change_status(${element.order_id},'cancled')" class="sokool-grey-background button-small order-button sokool-m-1" type="image" src="./img/close.png" alt="accept">
-                        <p>Decline</p>
-                    </div>
-                </div>
-            </div>`;
+                                        <div class="order-tittle">${element.item_name}</div>
+                                        <div class="order-image order-4"></div>
+                                        <div class="order-decription">${element.item_description}</div>
+                                        <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
+                                            <h3 class="text4">Ordered by</h3>
+                                            <h3 class="text3">${element.user_name}</h3>
+                                        </div>
+                                        <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
+                                            <h3 class="text4">At</h3>
+                                            <h3 class="text3">${element.created_at}</h3>
+                                        </div>
+                                        <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
+                                            <h3 class="text4">Quantity</h3>
+                                            <h3 class="text3">1</h3>
+                                        </div>
+                                        <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
+                                            <h3 class="text4">Price</h3>
+                                            <h3 class="text3">${element.item_price} UGX</h3>
+                                        </div>
+                                        <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
+                                        <h3 class="text4">Location</h3>
+                                        <h3 class="text3">${element.delivery_location}</h3>
+                                    </div>
+                                        <div class="sokool-flex-row sokool-flex-space-around">
+                                            <div class="sokool-p-1 sokool-flex-row sokool-flex-center-vert accept">
+                                                <input onclick="change_status(${element.order_id},'pending')"  class="sokool-secondary-background button-small order-button sokool-m-1" type="image" src="./img/done.png" alt="accept">
+                                                <p>Accept</p>
+                                            </div>
+                                            <div class="sokool-p-1 sokool-flex-row sokool-flex-center-vert decline">
+                                                <input onclick="change_status(${element.order_id},'cancled')" class="sokool-grey-background button-small order-button sokool-m-1" type="image" src="./img/close.png" alt="accept">
+                                                <p>Decline</p>
+                                            </div>
+                                        </div>
+                                    </div>`;
                     }
 
                     if (element.order_status == 'pending') {
                         pending += `<div class="order-item shadow">
-                <div class="order-tittle">${element.item_name}</div>
-                <div class="order-image order-4"></div>
-                <div class="order-decription">${element.item_description}</div>
-                <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
-                    <h3 class="text4">Ordered by</h3>
-                    <h3 class="text3">${element.user_name}</h3>
-                </div>
-                <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
-                    <h3 class="text4">At</h3>
-                    <h3 class="text3">${element.created_at}</h3>
-                </div>
-                <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
-                    <h3 class="text4">Quantity</h3>
-                    <h3 class="text3">1</h3>
-                </div>
-                <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
-                    <h3 class="text4">Price</h3>
-                    <h3 class="text3">${element.item_price} UGX</h3>
-                </div>
-                <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
-                <h3 class="text4">Location</h3>
-                <h3 class="text3">${element.delivery_location}</h3>
-            </div>
-            <div class="sokool-flex-row sokool-flex-space-around">
-            <div class="sokool-p-1 sokool-flex-row sokool-flex-center-vert complete">
-                <input onclick="change_status(${element.order_id},'complete')" class="sokool-secondary-background button-small order-button sokool-m-1" type="image" src="./img/done.png" alt="accept">
-                <p>Complete Order</p>
-            </div>
-        </div>
-            </div>`;
+                                    <div class="order-tittle">${element.item_name}</div>
+                                    <div class="order-image order-4"></div>
+                                    <div class="order-decription">${element.item_description}</div>
+                                    <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
+                                        <h3 class="text4">Ordered by</h3>
+                                        <h3 class="text3">${element.user_name}</h3>
+                                    </div>
+                                    <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
+                                        <h3 class="text4">At</h3>
+                                        <h3 class="text3">${element.created_at}</h3>
+                                    </div>
+                                    <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
+                                        <h3 class="text4">Quantity</h3>
+                                        <h3 class="text3">1</h3>
+                                    </div>
+                                    <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
+                                        <h3 class="text4">Price</h3>
+                                        <h3 class="text3">${element.item_price} UGX</h3>
+                                    </div>
+                                    <div class="sokool-flex-row sokool-w-100 sokool-flex-space-between">
+                                    <h3 class="text4">Location</h3>
+                                    <h3 class="text3">${element.delivery_location}</h3>
+                                </div>
+                                <div class="sokool-flex-row sokool-flex-space-around">
+                                <div class="sokool-p-1 sokool-flex-row sokool-flex-center-vert complete">
+                                    <input onclick="change_status(${element.order_id},'complete')" class="sokool-secondary-background button-small order-button sokool-m-1" type="image" src="./img/done.png" alt="accept">
+                                    <p>Complete Order</p>
+                                </div>
+                            </div>
+                                </div>`;
                     }
                 });
 
@@ -152,15 +150,14 @@ function fetchAllOrders() {
 
                     document.getElementById('pending-list').innerHTML = pending;
                 }
-
             }
-
         });
-
 }
 
 
+
 function change_status(id, status) {
+    // Changes status of an order
     endpoint = 'orders/' + parseInt(id);
     data = {
         "order_status": status
@@ -170,35 +167,36 @@ function change_status(id, status) {
             return res.json();
         })
         .then(res => {
-            console.log(res);
-
             fetchAllOrders();
         });
 
 }
 
+
+
 function delete_item(id) {
+    // Deletes order 
     endpoint = 'menu/' + parseInt(id);
     data = {};
-
     deletedata(endpoint, data, token).then(res => {
             if (res.status == 200) {
                 fetchMenu();
             }
-
         })
         .then(res => {
 
         });
-
 }
+
+
 try {
     document.getElementById('edit-final').onclick = function(e) {
         e.preventDefault();
-        // close add quantity dialog
-
     };
 } catch (err) {}
+
+
+
 try {
     document.getElementById('add_order').onclick = function(e) {
         e.preventDefault();
@@ -208,6 +206,8 @@ try {
         element.classList.toggle("hide");
     };
 } catch (err) {}
+
+
 
 try {
     document.getElementById('edit-final').addEventListener('click', function(e) {
@@ -237,9 +237,6 @@ try {
 
                     document.getElementById('add_item_message').innerHTML = res.message;
                 }
-                console.log(res);
-
             });
-
     });
 } catch (err) {}

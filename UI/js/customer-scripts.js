@@ -1,7 +1,8 @@
 var token = getToken();
-fetchCustomerMenu();
-var selected = {};
 
+fetchCustomerMenu();
+
+var selected = {};
 
 if (token == undefined) {
     back_home();
@@ -14,9 +15,11 @@ function back_home() {
 }
 
 function select(item) {
+    // adds selected item to global
     selected = item;
-
 }
+
+
 
 function fetchCustomerMenu() {
     // gets all items on the menu
@@ -29,30 +32,30 @@ function fetchCustomerMenu() {
                 back_home();
             } else {
                 res.reverse().forEach((element, key) => {
-                    ii += `  <div class="order-item shadow">
-            <div class="order-tittle">${element.item_name}</div>
-            <div class="order-image order-${key}"></div>
-            <div class="order-decription">${element.item_description}</div>
-            <div class="order-price">${element.item_price}</div>
-            <input onclick="${select(element)}" class="sokool-secondary-background  order-button" type="image" src="./img/add_shopping_cart.png" alt="close">
-        </div>`;
+                    ii += ` <div class="order-item shadow">
+                            <div class="order-tittle">${element.item_name}</div>
+                            <div class="order-image order-${key}"></div>
+                            <div class="order-decription">${element.item_description}</div>
+                            <div class="order-price">${element.item_price}</div>
+                            <input onclick="${select(element)}" class="sokool-secondary-background  order-button" type="image" src="./img/add_shopping_cart.png" alt="close">
+                            </div>`;
                 });
 
                 if (ii == "") {
                     document.getElementById('fast-orders').innerHTML = ` <div class="order-item ">
                 <div class="order-tittle">No Items on menu</div></div>`;
                 } else {
-
                     document.getElementById('fast-orders').innerHTML = ii;
                 }
             }
         });
-
 }
+
+
 
 try {
     document.getElementById('fast-orders').addEventListener('click', function(e) {
-        // open add quantity dialog
+        // open add order dialog
 
         if (e.target && isInArray(e.target.classList, "order-button")) {
 
@@ -69,9 +72,11 @@ try {
     });
 } catch (err) {}
 
+
+
 try {
     document.getElementById('add-final').addEventListener('click', function(e) {
-        // adds item to menu
+        // places order
         e.preventDefault();
         formElements = document.getElementById("make-order-form");
         var location = formElements.getElementsByTagName('input')[0].value;
@@ -92,17 +97,17 @@ try {
                 } else {
                     document.getElementById('place_order_message').innerHTML = res.message;
                 }
-                console.log(res);
                 get_user_order_history();
-
-
             });
 
     });
 } catch (err) {}
+
+
 get_user_order_history();
 
 function get_user_order_history() {
+    // Gets users order history
     endpoint = 'users/orders';
 
     getdata(endpoint, token).then(res => {
@@ -115,14 +120,14 @@ function get_user_order_history() {
                 var ii = '';
                 res.reverse().forEach((element, key) => {
                     ii += `<div class="order-item shadow">
-                <div class="order-tittle">${element.item_name}</div>
-                <div class="order-image order-9"></div>
-                <div class="order-decription">${element.item_description}</div>
-                <div class="order-price">${element.item_price} UGX</div>
-                <div class="order-decription">${element.created_at}</div>
-                <div class="order-price">${element.order_status}</div>
-               <!-- <input class="sokool-secondary-background  order-button" type="image" src="./img/remove_circle_outline.png" alt="close"> -->
-            </div>`;
+                            <div class="order-tittle">${element.item_name}</div>
+                            <div class="order-image order-9"></div>
+                            <div class="order-decription">${element.item_description}</div>
+                            <div class="order-price">${element.item_price} UGX</div>
+                            <div class="order-decription">${element.created_at}</div>
+                            <div class="order-price">${element.order_status}</div>
+                        <!-- <input class="sokool-secondary-background  order-button" type="image" src="./img/remove_circle_outline.png" alt="close"> -->
+                        </div>`;
                 });
 
                 if (ii == "") {
@@ -134,5 +139,4 @@ function get_user_order_history() {
                 }
             }
         });
-
 }
