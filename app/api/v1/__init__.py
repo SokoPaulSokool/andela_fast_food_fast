@@ -12,6 +12,9 @@ import os
 from flask_jwt_extended import JWTManager
 from flasgger import Swagger
 from flask_cors import CORS
+from app.api.models.database.all_tables_create_drop import create_tables
+from app.api.models.user_manage import User
+from app.api.models.database.crud_users_table import QueryUsersTable
 
 app = Flask(__name__, static_url_path='/static/',
             static_folder='../../../UI/static',
@@ -42,3 +45,16 @@ app.register_blueprint(api_static_html)
 
 app.config['SECRET_KEY'] = os.environ.get(
     'SECRET_KEY', 'sokool-1234567')
+
+
+
+
+create_tables().users_drop_table()
+create_tables().menu_drop_table()
+create_tables().orders_drop_table()
+create_tables().users_table()
+create_tables().menu_table()
+create_tables().orders_table()
+
+new_user = User("", "soko", "soko@gmail.com", "pass1234", "admin")
+QueryUsersTable().add_user(new_user)
