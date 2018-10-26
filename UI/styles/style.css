@@ -152,12 +152,13 @@ input {
 /* orders style */
 
 .order-item {
-    min-width: 10%;
-    min-height: 200px;
+    min-width: 20%;
+    min-height: 100px;
     border: 1px solid #ff611d;
     border-radius: 10px;
     padding: 8px;
     margin: 10px;
+    align-self: baseline;
 }
 
 .order-image {

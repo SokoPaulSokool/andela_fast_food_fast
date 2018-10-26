@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <meta name="HandheldFriendly" content="true">
+    <base href="./">
     <title>Fast Food Fast</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="./styles/general.css">
@@ -59,6 +60,9 @@
                             <span class="label">Password</span>
                             <input type="password" name="password" placeholder="password">
                         </div>
+                        <div class="fields">
+                            <span id="signup_message"></span>
+                        </div>
                         <button type="" id="submit_button" class="sokool-primary-background fields">Sign up</button>
                         <div id="create_account" class="sokool-pointer ">Log in</div>
                     </form>
@@ -77,7 +81,7 @@
                             <input type="password" name="password" placeholder="password">
                         </div>
 
-                        <div class="fields">
+                        <!-- <div class="fields hide">
                             <span class="label">Account Type</span>
                             <select class="label sokool-p-1 sokool-w-60" name="" id="select">
                                 <option class="label sokool-p-1" value="customer">
@@ -87,6 +91,9 @@
                                     Admin
                                 </option>
                             </select>
+                        </div> -->
+                        <div class="fields">
+                            <span id="login_message"></span>
                         </div>
 
                         <button type="button" id="login_now" class="sokool-primary-background fields">Log in</button>
