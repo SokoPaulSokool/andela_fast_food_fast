@@ -1,6 +1,7 @@
 // baseUrl = 'http://localhost:5000/api/v1/';
 baseUrl = 'https://andela-fast-food-fast.herokuapp.com/api/v1/';
 
+
 try {
     document.getElementById('login_button').addEventListener('click', function() {
         openForms();
